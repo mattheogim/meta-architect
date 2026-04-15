@@ -1,0 +1,86 @@
+{
+  "features": {
+    "debate_protocol": {
+      "description": "Phase 4 adversarial challenge 구조",
+      "source_files": ["src/agents/simplicity_advocate.py", "src/agents/risk_analyst.py", "src/agents/critic_agent.py", "src/orchestrator/phase4.py"],
+      "required_papers": [
+        {"id": "A1", "arxiv": "2305.14325", "sections": ["§3 Method"], "why": "debate protocol 설계"},
+        {"id": "A2", "arxiv": "2305.19118", "sections": ["§3.1 DoT", "§3.2 MAD", "Algorithm 1"], "why": "DoT 방지 + MAD 프레임워크"},
+        {"id": "E6", "arxiv": "2509.05396", "sections": ["§4 failure modes"], "why": "토론 실패 모드 방어"}
+      ]
+    },
+    "multi_model_assignment": {
+      "description": "에이전트별 다른 LLM 배정",
+      "source_files": ["src/config/model_assignment.py", "src/llm/provider.py"],
+      "required_papers": [
+        {"id": "A3", "arxiv": "2410.12853", "sections": ["§4 실험 결과"], "why": "다양성 프리미엄 수치 확인"},
+        {"id": "E3", "arxiv": "2502.00674", "sections": ["전체"], "why": "Self-MoA 반론 — 같은 역할에는 같은 모델"}
+      ]
+    },
+    "blackboard_implementation": {
+      "description": "Blackboard 공유 컨텍스트 구현",
+      "source_files": ["src/blackboard/schema.py", "src/blackboard/state.py", "src/blackboard/views.py"],
+      "required_papers": [
+        {"id": "C1", "arxiv": "2507.01701", "sections": ["§3 아키텍처", "§4 에이전트 역할"], "why": "LLM Blackboard 구현 참고"},
+        {"id": "E1", "arxiv": "2505.21298", "sections": ["§3 네 가지 비판"], "why": "자연어 조정 모호성 방어"}
+      ]
+    },
+    "scaling_and_lazy_loading": {
+      "description": "에이전트 수 스케일링 + Lazy Loading",
+      "source_files": ["src/orchestrator/router.py", "src/orchestrator/lazy_loader.py"],
+      "required_papers": [
+        {"id": "B1", "arxiv": "2406.07155", "sections": ["§3 MacNet", "§4 Scaling Law"], "why": "로지스틱 성장 수식"},
+        {"id": "E2", "arxiv": "2512.08296", "sections": ["§4 Scaling Law", "§5 실효 팀 크기"], "why": "1.724승 조정비용"}
+      ]
+    },
+    "peer_review_system": {
+      "description": "상태 전이 4원칙 + Review Authority",
+      "source_files": ["src/blackboard/state_transition.py", "src/blackboard/review_authority.py"],
+      "required_papers": [
+        {"id": "G2", "arxiv": "2507.21028", "sections": ["§3 MAJ-Eval"], "why": "multi-agent judge 프레임워크"},
+        {"id": "F1", "arxiv": "2310.13548", "sections": ["전체"], "why": "sycophancy 편향 실증"},
+        {"id": "G1", "arxiv": "2411.15594", "sections": ["§3 편향 분류", "§5 완화"], "why": "LLM judge 편향+완화"}
+      ]
+    },
+    "structured_output": {
+      "description": "에이전트 출력 형식 (Think NL, Write Schema)",
+      "source_files": ["src/agents/base_agent.py", "src/blackboard/entry.py"],
+      "required_papers": [
+        {"id": "I1", "arxiv": "2408.02442", "sections": ["§3 실험", "§4 완화"], "why": "JSON 강제 시 추론 하락 수치"}
+      ]
+    },
+    "prototype_validator": {
+      "description": "Phase 4.5 코드 실행 검증",
+      "source_files": ["src/agents/prototype_validator.py", "src/sandbox/executor.py"],
+      "required_papers": [],
+      "required_tools": ["E2B sandbox docs: https://e2b.dev/docs"]
+    },
+    "precedent_rag": {
+      "description": "Precedent Researcher RAG 파이프라인",
+      "source_files": ["src/agents/precedent_researcher.py", "src/rag/pipeline.py"],
+      "required_papers": [],
+      "required_tools": ["Semantic Scholar API", "GitHub API"]
+    },
+    "agent_prompts": {
+      "description": "에이전트 시스템 프롬프트 작성",
+      "source_files": ["src/agents/prompts/"],
+      "required_papers": [
+        {"id": "E4", "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5879722", "sections": ["전체"], "why": "페르소나 ≠ 추론 개선. 구조적 역할 분리 필요"}
+      ]
+    },
+    "convergence": {
+      "description": "수렴 보장 + 글로벌 라운드 상한",
+      "source_files": ["src/orchestrator/state_assessor.py", "src/orchestrator/deadlock_resolver.py"],
+      "required_papers": [
+        {"id": "E5", "arxiv": "2311.17371", "sections": ["§4 수렴 분석"], "why": "MAD 하이퍼파라미터 민감도"}
+      ]
+    },
+    "context_management": {
+      "description": "읽기 뷰 최적화 + Lost in the Middle 방어",
+      "source_files": ["src/blackboard/views.py", "src/agents/base_agent.py"],
+      "required_papers": [
+        {"id": "H1", "arxiv": "2307.03172", "sections": ["§3 실험"], "why": "중간 정보 30%+ 하락"}
+      ]
+    }
+  }
+}

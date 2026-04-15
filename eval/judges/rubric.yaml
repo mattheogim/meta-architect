@@ -1,0 +1,118 @@
+# Evaluation Rubric — Fixed across all experiments
+# DO NOT modify after experiments begin (pre-registered)
+
+version: "1.0"
+description: "Architecture design quality evaluation rubric for LLM-as-Judge"
+
+# Scoring scale
+scale:
+  min: 1
+  max: 5
+  labels:
+    1: "Unusable — fundamental flaws, cannot be implemented"
+    2: "Poor — major issues, significant rework needed"
+    3: "Acceptable — works but has notable gaps"
+    4: "Good — solid design with minor improvements possible"
+    5: "Excellent — production-ready, comprehensive"
+
+# Judge 1: Senior Architect
+architect_criteria:
+  feasibility:
+    weight: 0.3
+    description: "Can this be built with the stated constraints (budget, team, timeline)?"
+    scoring_guide:
+      1: "Impossible within constraints"
+      3: "Possible with significant scope cuts"
+      5: "Achievable as described"
+
+  scalability:
+    weight: 0.25
+    description: "Will it handle 10x growth in users/data/features?"
+    scoring_guide:
+      1: "Will break immediately at scale"
+      3: "Can scale with refactoring"
+      5: "Scales gracefully with minimal changes"
+
+  maintainability:
+    weight: 0.25
+    description: "Can a team maintain and evolve this for 2+ years?"
+    scoring_guide:
+      1: "Unmaintainable spaghetti"
+      3: "Maintainable with effort"
+      5: "Clean separation of concerns, easy to modify"
+
+  pattern_appropriateness:
+    weight: 0.2
+    description: "Are the chosen patterns right for this specific problem?"
+    scoring_guide:
+      1: "Completely wrong patterns"
+      3: "Reasonable but not optimal"
+      5: "Best patterns for the problem, well justified"
+
+# Judge 2: DevOps/SRE
+devops_criteria:
+  deployability:
+    weight: 0.3
+    description: "How easy to deploy and operate?"
+    scoring_guide:
+      1: "No deployment strategy"
+      3: "Deployable with custom scripts"
+      5: "CI/CD ready, containerized, clear runbook"
+
+  observability:
+    weight: 0.25
+    description: "Can you monitor, debug, and trace issues?"
+    scoring_guide:
+      1: "No monitoring plan"
+      3: "Basic logging"
+      5: "Full observability (metrics, traces, alerts)"
+
+  security:
+    weight: 0.25
+    description: "Are obvious security concerns addressed?"
+    scoring_guide:
+      1: "Critical security flaws"
+      3: "Basic security (auth, HTTPS)"
+      5: "Defense in depth, threat model considered"
+
+  cost_efficiency:
+    weight: 0.2
+    description: "Is infrastructure cost reasonable for the requirements?"
+    scoring_guide:
+      1: "Wildly over budget"
+      3: "Within budget with optimization"
+      5: "Cost-optimized, clear cost projections"
+
+# Judge 3: Junior Developer
+developer_criteria:
+  clarity:
+    weight: 0.3
+    description: "Do you understand what to build and why?"
+    scoring_guide:
+      1: "Completely lost"
+      3: "Get the big picture, unclear on details"
+      5: "Crystal clear, know exactly what to do"
+
+  learning_curve:
+    weight: 0.2
+    description: "How much do you need to learn before starting?"
+    scoring_guide:
+      1: "Requires mastering 5+ new technologies"
+      3: "Need to learn 1-2 new things"
+      5: "Can start with existing knowledge"
+
+  documentation_quality:
+    weight: 0.25
+    description: "Are decisions explained well?"
+    scoring_guide:
+      1: "No rationale given"
+      3: "Some decisions explained"
+      5: "Every decision has clear rationale and trade-offs"
+
+  implementation_guidance:
+    weight: 0.25
+    description: "Enough detail to start coding?"
+    scoring_guide:
+      1: "Abstract concepts only"
+      3: "Component breakdown exists"
+      5: "Data models, API contracts, sequence diagrams included"

@@ -1,0 +1,41 @@
+# Scenario 2: Real-time Chat Application (Medium Complexity)
+# Used across all experiments as the primary test scenario
+
+id: scenario-2-chat
+name: "Real-time Chat Application"
+complexity: medium
+
+user_input: |
+  I want to build a real-time chat application. Key requirements:
+  - 1-on-1 and group chat (up to 50 people per group)
+  - Message history (searchable)
+  - Online/offline status
+  - File sharing (images, documents up to 10MB)
+  - Read receipts
+  - Push notifications
+
+  Constraints:
+  - Solo developer
+  - Budget: $100/month for infrastructure
+  - Timeline: 4 weeks for MVP
+  - Tech preference: I know React and Node.js
+  - Expected users: 500 initially, maybe 5000 in 6 months
+
+expected_concepts_minimum:
+  - "event-driven"
+  - "database theory"
+  - "caching"
+  - "authentication"
+  - "message queue"
+
+hard_constraints:
+  budget_max: "$100/month"
+  team_size: 1
+  deadline: "4 weeks"
+
+priorities:
+  simplicity: 0.3
+  cost: 0.25
+  scalability: 0.2
+  build_speed: 0.15
+  security: 0.1

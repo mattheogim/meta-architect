@@ -1,0 +1,30 @@
+# Scenario 4: Ambiguous Requirements (Tests blind spot discovery)
+
+id: scenario-4-ambiguous
+name: "SNS-like Platform"
+complexity: complicated
+
+user_input: |
+  I want to make something like a social network, but different.
+  Like Instagram meets Reddit meets Discord?
+  Users should be able to share stuff and interact.
+  Maybe some AI features too.
+
+  I have some coding experience but never built anything this big.
+
+expected_concepts_minimum:
+  - "bounded context"
+  - "authentication"
+  - "scalability"
+
+hard_constraints:
+  budget_max: "unknown"
+  team_size: 1
+  deadline: "unknown"
+
+priorities:
+  simplicity: 0.3
+  build_speed: 0.25
+  scalability: 0.2
+  cost: 0.15
+  security: 0.1

@@ -1,0 +1,40 @@
+# Scenario 5: Extreme Constraints (Tests feasibility boundary)
+
+id: scenario-5-extreme
+name: "E-commerce Platform with Zero Budget"
+complexity: chaotic
+
+user_input: |
+  I need a full e-commerce platform:
+  - Product catalog with search
+  - Shopping cart and checkout
+  - Payment processing
+  - Order management
+  - User accounts with profiles
+  - Admin dashboard
+  - Inventory management
+  - Email notifications
+  - Reviews and ratings
+
+  Constraints:
+  - I'm alone
+  - Budget: literally $0 per month
+  - I need it in 1 week
+  - I only know HTML and a little Python
+
+expected_concepts_minimum:
+  - "layered"
+  - "database theory"
+  - "authentication"
+
+hard_constraints:
+  budget_max: "$0"
+  team_size: 1
+  deadline: "1 week"
+
+priorities:
+  build_speed: 0.35
+  cost: 0.3
+  simplicity: 0.25
+  scalability: 0.05
+  security: 0.05

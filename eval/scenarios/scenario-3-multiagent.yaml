@@ -1,0 +1,43 @@
+# Scenario 3: Multi-Agent System (High Complexity — recursive self-design)
+
+id: scenario-3-multiagent
+name: "Multi-Agent Architecture Design System"
+complexity: complex
+
+user_input: |
+  I want to build a system where multiple AI agents collaborate to design
+  software architecture. The system should:
+  - Accept a software idea as input
+  - Have specialized agents (understanding, design, challenge, decision)
+  - Agents share information via a common workspace
+  - Include adversarial review (agents challenging each other)
+  - Produce architecture documents, diagrams, and decision records
+  - Support iteration based on user feedback
+
+  Constraints:
+  - 2 developers
+  - Budget: $500/month (API costs)
+  - Timeline: 2 months
+  - Tech: Python, familiar with LangChain
+  - Expected usage: 100 architecture sessions/month
+
+expected_concepts_minimum:
+  - "multi-agent"
+  - "orchestrator"
+  - "event-driven"
+  - "domain-driven design"
+  - "trade-off analysis"
+  - "knowledge graph"
+  - "systems theory"
+
+hard_constraints:
+  budget_max: "$500/month"
+  team_size: 2
+  deadline: "2 months"
+
+priorities:
+  scalability: 0.25
+  simplicity: 0.2
+  cost: 0.2
+  changeability: 0.2
+  build_speed: 0.15

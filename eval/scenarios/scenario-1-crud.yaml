@@ -1,0 +1,34 @@
+# Scenario 1: Simple CRUD (Low Complexity)
+
+id: scenario-1-crud
+name: "Todo App"
+complexity: simple
+
+user_input: |
+  I want to build a todo list app. Basic features:
+  - Add, edit, delete todos
+  - Mark as complete
+  - Filter by status (all, active, completed)
+  - Persist data (don't lose todos on refresh)
+
+  Constraints:
+  - Solo developer, beginner level
+  - Budget: $0 (free tier only)
+  - Timeline: 1 week
+  - I only know basic JavaScript
+
+expected_concepts_minimum:
+  - "database theory"
+  - "layered"
+
+hard_constraints:
+  budget_max: "$0"
+  team_size: 1
+  deadline: "1 week"
+
+priorities:
+  simplicity: 0.4
+  build_speed: 0.3
+  cost: 0.2
+  scalability: 0.05
+  security: 0.05
