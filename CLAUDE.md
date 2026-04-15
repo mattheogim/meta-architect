@@ -84,7 +84,24 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 - `PRE-REGISTRATION.md` 확정 후 가설/분석 계획 수정 금지 (HARKing 방지)
 - 사후 변경은 반드시 `DEVIATIONS.md`에 기록
 
-## 7. Claim Tagging (Hallucination 방지)
+## 7. 4 Thinking Modes
+
+모든 작업에서 4가지 모드를 의식적으로 전환한다. 상세: `THINKING-MODES.md`
+
+```
+BUILD (만들어)  →  설계, 구현, 플랜
+BREAK (부숴봐)  →  공격, 반박, 리스크. "이게 실패했다면 왜?"
+ZOOM  (더 봐)   →  빠진 것, 다음 단계. "안 물어본 질문은?"
+FLIP  (뒤집어)  →  반대, 가정 의심. "최악으로 만들려면?"
+```
+
+적용 기준:
+- **Type 1 결정** (되돌리기 어려움): BUILD + BREAK + FLIP 전부
+- **Type 2 결정** (되돌리기 쉬움): BUILD만. 바로 실행.
+- 판단: "이걸 잘못 정하면 1주일 이상 되돌리기 어려운가?"
+- **절대 하면 안 되는 것**: BUILD만 하고 BREAK를 안 하기 (confirmation bias)
+
+## 8. Claim Tagging (Hallucination 방지)
 
 **모든 핵심 주장에 출처 + 유형 + 검증 상태 태그를 붙인다.**
 
