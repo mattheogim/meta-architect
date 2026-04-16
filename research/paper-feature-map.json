@@ -4,8 +4,8 @@
       "description": "Phase 4 adversarial challenge 구조",
       "source_files": ["src/agents/simplicity_advocate.py", "src/agents/risk_analyst.py", "src/agents/critic_agent.py", "src/orchestrator/phase4.py"],
       "required_papers": [
-        {"id": "A1", "arxiv": "2305.14325", "sections": ["§3 Method"], "why": "debate protocol 설계"},
-        {"id": "A2", "arxiv": "2305.19118", "sections": ["§3.1 DoT", "§3.2 MAD", "Algorithm 1"], "why": "DoT 방지 + MAD 프레임워크"},
+        {"id": "A1", "arxiv": "2305.14325", "sections": ["§2 Method (debate protocol)"], "why": "debate protocol 설계", "verified": true},
+        {"id": "A2", "arxiv": "2305.19118", "sections": ["§1 DoT 정의", "§2 MAD 프레임워크"], "why": "DoT 방지 + MAD 프레임워크", "verified": true},
         {"id": "E6", "arxiv": "2509.05396", "sections": ["§4 failure modes"], "why": "토론 실패 모드 방어"}
       ]
     },
@@ -13,7 +13,7 @@
       "description": "에이전트별 다른 LLM 배정",
       "source_files": ["src/config/model_assignment.py", "src/llm/provider.py"],
       "required_papers": [
-        {"id": "A3", "arxiv": "2410.12853", "sections": ["§4 실험 결과"], "why": "다양성 프리미엄 수치 확인"},
+        {"id": "A3", "arxiv": "2410.12853", "sections": ["§4.2 Diversity of Thought"], "why": "다양성 프리미엄 수치 확인", "verified": true},
         {"id": "E3", "arxiv": "2502.00674", "sections": ["전체"], "why": "Self-MoA 반론 — 같은 역할에는 같은 모델"}
       ]
     },
@@ -21,7 +21,7 @@
       "description": "Blackboard 공유 컨텍스트 구현",
       "source_files": ["src/blackboard/schema.py", "src/blackboard/state.py", "src/blackboard/views.py"],
       "required_papers": [
-        {"id": "C1", "arxiv": "2507.01701", "sections": ["§3 아키텍처", "§4 에이전트 역할"], "why": "LLM Blackboard 구현 참고"},
+        {"id": "C1", "arxiv": "2507.01701", "sections": ["§3 Method (아키텍처+역할 모두 포함)", "§3.2 Blackboard Cycle"], "why": "LLM Blackboard 구현 참고", "verified": true},
         {"id": "E1", "arxiv": "2505.21298", "sections": ["§3 네 가지 비판"], "why": "자연어 조정 모호성 방어"}
       ]
     },
@@ -29,8 +29,8 @@
       "description": "에이전트 수 스케일링 + Lazy Loading",
       "source_files": ["src/orchestrator/router.py", "src/orchestrator/lazy_loader.py"],
       "required_papers": [
-        {"id": "B1", "arxiv": "2406.07155", "sections": ["§3 MacNet", "§4 Scaling Law"], "why": "로지스틱 성장 수식"},
-        {"id": "E2", "arxiv": "2512.08296", "sections": ["§4 Scaling Law", "§5 실효 팀 크기"], "why": "1.724승 조정비용"}
+        {"id": "B1", "arxiv": "2406.07155", "sections": ["§2 MacNet 설계", "§3.3 Collaborative Scaling Law"], "why": "로지스틱 성장 수식", "verified": true},
+        {"id": "E2", "arxiv": "2512.08296", "sections": ["§4 Experiments & Results (§4.3 Scaling Principles)"], "why": "1.724승 조정비용", "verified": true}
       ]
     },
     "peer_review_system": {

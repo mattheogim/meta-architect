@@ -1,0 +1,702 @@
+version: "1.0"
+papers:
+  # ============================================================
+  # Section A: Multi-agent Debate/Diversity
+  # ============================================================
+  - id: "A1"
+    title: "Improving Factuality and Reasoning in Language Models through Multiagent Debate"
+    authors: ["Yilun Du", "Shuang Li", "Antonio Torralba", "Joshua B. Tenenbaum", "Igor Mordatch"]
+    year: 2023
+    arxiv_id: "2305.14325"
+    url: "https://arxiv.org/abs/2305.14325"
+    venue: "ICML 2024"
+    status: verified
+    must_read: true
+    category: debate
+    key_claims:
+      - "3 agents x 2 rounds debate improves accuracy by +7-16pp over single agent"
+      - "Arithmetic: 67->81.8 (+14.8pp), GSM8K: 77->85 (+8pp), MMLU: 63.9->71.1 (+7.2pp)"
+      - "Model: gpt-3.5-turbo-0301"
+    sections_cited: ["§2 Method (debate protocol)"]
+    sections_verified: ["§2 Method (debate protocol)", "§3 Experiments"]
+    used_by_features: ["debate_protocol"]
+    verified_date: "2026-04-15"
+
+  - id: "A2"
+    title: "Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate"
+    authors: ["Tian Liang", "Zhiwei He", "Wenxiang Jiao", "Xing Wang", "Yan Wang", "Rui Wang", "Yujiu Yang", "Zhaopeng Tu", "Shuming Shi"]
+    year: 2023
+    arxiv_id: "2305.19118"
+    url: "https://arxiv.org/abs/2305.19118"
+    venue: "EMNLP 2024"
+    status: verified
+    must_read: true
+    category: debate
+    key_claims:
+      - "Degeneration-of-Thought (DoT): LLM commits to answer, reflection cannot shift thinking"
+      - "MAD framework: agents debate tit-for-tat + judge manages"
+      - "Effective on commonsense MT and counter-intuitive arithmetic"
+    sections_cited: ["§1 DoT definition", "§2 MAD framework"]
+    sections_verified: ["§1 DoT definition", "§2 MAD framework"]
+    used_by_features: ["debate_protocol"]
+    verified_date: "2026-04-15"
+    notes: "Algorithm 1 does NOT exist in this paper (previously hallucinated)"
+
+  - id: "A3"
+    title: "Diversity of Thought Elicits Stronger Reasoning Capabilities in Multi-Agent Debate Frameworks"
+    authors: ["Mahmood Hegazy"]
+    year: 2024
+    arxiv_id: "2410.12853"
+    url: "https://arxiv.org/abs/2410.12853"
+    venue: "Journal of Robotics and Automation Research, Vol 5 Issue 3"
+    status: verified
+    must_read: true
+    category: debate
+    key_claims:
+      - "Diverse 3 models (Gemini-Pro + Mixtral-7Bx8 + PaLM2-M) + 1 summarizer -> GSM-8K 91%"
+      - "Homogeneous 3 (Gemini-Pro x3) -> 82% (CoT variant; 80% without CoT)"
+      - "Diversity premium: +9pp"
+    sections_cited: ["§4.2 Diversity of Thought"]
+    sections_verified: ["§4.1 Model Capacity", "§4.2 Diversity of Thought"]
+    used_by_features: ["multi_model_assignment"]
+    verified_date: "2026-04-15"
+    notes: "Results presented in figures/charts, not tables"
+
+  - id: "A4"
+    title: "Mixture-of-Agents Enhances Large Language Model Capabilities"
+    authors: ["Junlin Wang et al."]
+    year: 2024
+    arxiv_id: "2406.04692"
+    url: "https://arxiv.org/abs/2406.04692"
+    status: unverified
+    must_read: false
+    category: debate
+    key_claims:
+      - "Open-source MoA: AlpacaEval 2.0 65.1% (GPT-4o: 57.5%)"
+      - "Collaborativeness phenomenon: LLMs produce better output when seeing other models' outputs"
+    sections_cited: []
+    used_by_features: ["blackboard_implementation"]
+
+  # ============================================================
+  # Section B: Multi-agent Scaling
+  # ============================================================
+  - id: "B1"
+    title: "Scaling Large Language Model-based Multi-Agent Collaboration"
+    authors: ["Chen Qian", "Zihao Xie", "YiFei Wang", "Wei Liu", "Kunlun Zhu", "Hanchen Xia", "Yufan Dang", "Zhuoyun Du", "Weize Chen", "Cheng Yang", "Zhiyuan Liu", "Maosong Sun"]
+    year: 2024
+    arxiv_id: "2406.07155"
+    url: "https://arxiv.org/abs/2406.07155"
+    venue: "ICLR 2025"
+    status: verified
+    must_read: true
+    category: scaling
+    key_claims:
+      - "Tested up to 1000+ agents"
+      - "Performance follows logistic growth pattern"
+      - "Irregular topology > regular topology (statistically significant)"
+      - "Small-world properties beneficial (shorter path, higher clustering)"
+      - "MacNet: DAG-based topological orchestration"
+    sections_cited: ["§2 MacNet design", "§3.3 Collaborative Scaling Law"]
+    sections_verified: ["§2 Multi-Agent Collaboration Network", "§3.3 Collaborative Scaling Law"]
+    used_by_features: ["scaling_and_lazy_loading"]
+    verified_date: "2026-04-15"
+    notes: "small-world 'optimal' is slightly simplified — paper is more nuanced"
+
+  - id: "B2"
+    title: "More Agents Is All You Need"
+    authors: ["Junyou Li", "Qin Zhang", "Yangbin Yu", "Qiang Fu", "Deheng Ye"]
+    year: 2024
+    arxiv_id: "2402.05120"
+    url: "https://arxiv.org/abs/2402.05120"
+    status: unverified
+    must_read: false
+    category: scaling
+    key_claims:
+      - "More agents + sampling-and-voting -> consistent improvement"
+      - "Small model x many agents > large model x few agents (under certain conditions)"
+    sections_cited: []
+    used_by_features: ["scaling_and_lazy_loading"]
+
+  # ============================================================
+  # Section C: Blackboard Pattern
+  # ============================================================
+  - id: "C1"
+    title: "Exploring Advanced LLM Multi-Agent Systems Based on Blackboard Architecture"
+    authors: ["Bochen Han", "Songmao Zhang"]
+    year: 2025
+    arxiv_id: "2507.01701"
+    url: "https://arxiv.org/abs/2507.01701"
+    status: verified
+    must_read: true
+    category: blackboard
+    key_claims:
+      - "5 agent roles: decider, planner, critic, conflict-resolver, cleaner"
+      - "Blackboard-based communication for LLM agents"
+      - "Competitive with SOTA MAS on commonsense/reasoning/math (MMLU, ARC, GPQA, BBH, MATH, GSM8K)"
+    sections_cited: ["§3 Method (architecture + roles)", "§3.2 Blackboard Cycle"]
+    sections_verified: ["§3 Method", "§3.2 Blackboard Cycle", "§4 Experiments"]
+    used_by_features: ["blackboard_implementation"]
+    verified_date: "2026-04-15"
+    notes: "Only 2 authors, not 'et al.' — previously incorrect"
+
+  - id: "C2"
+    title: "LLM-Based Multi-Agent Blackboard System for Information Discovery in Data Science"
+    authors: []
+    year: 2025
+    arxiv_id: "2510.01285"
+    url: "https://arxiv.org/abs/2510.01285"
+    status: unverified
+    must_read: false
+    category: blackboard
+    key_claims:
+      - "Blackboard MAS validated in data science domain"
+    sections_cited: []
+    used_by_features: ["blackboard_implementation"]
+
+  # ============================================================
+  # Section D: Benchmarks
+  # ============================================================
+  - id: "D1"
+    title: "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework"
+    authors: ["Sirui Hong et al."]
+    year: 2023
+    arxiv_id: "2308.00352"
+    url: "https://arxiv.org/abs/2308.00352"
+    venue: "ICLR 2024"
+    status: unverified
+    must_read: false
+    category: benchmark
+    key_claims:
+      - "HumanEval Pass@1 85.9%, MBPP Pass@1 87.7% (GPT-4)"
+      - "Executable feedback removal: HumanEval -4.2%, MBPP -5.4%"
+      - "SOP-based agent coordination"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "D2"
+    title: "ChatDev: Communicative Agents for Software Development"
+    authors: ["Chen Qian et al."]
+    year: 2023
+    arxiv_id: "2307.07924"
+    url: "https://arxiv.org/abs/2307.07924"
+    venue: "ACL 2024"
+    status: unverified
+    must_read: false
+    category: benchmark
+    key_claims:
+      - "Average 48,470 tokens/software, cost ~$0.30, time <7 min"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "D3"
+    title: "AgentVerse: Facilitating Multi-Agent Collaboration and Exploring Emergent Behaviors"
+    authors: ["Weize Chen et al."]
+    year: 2023
+    arxiv_id: "2308.10848"
+    url: "https://arxiv.org/abs/2308.10848"
+    status: unverified
+    must_read: false
+    category: benchmark
+    key_claims:
+      - "Multi-agent groups exceed single agent (with dynamic composition)"
+    sections_cited: []
+    used_by_features: []
+
+  # ============================================================
+  # Section E: Opposing/Critical Papers
+  # ============================================================
+  - id: "E1"
+    title: "Large Language Models Miss the Multi-Agent Mark"
+    authors: ["Emanuele La Malfa et al."]
+    year: 2025
+    arxiv_id: "2505.21298"
+    url: "https://arxiv.org/abs/2505.21298"
+    venue: "NeurIPS 2025 Position Track"
+    status: unverified
+    must_read: true
+    category: opposing
+    key_claims:
+      - "60+ papers analyzed: most MAS LLM lack autonomy, social interaction, structured environment"
+      - "Natural language coordination is ambiguous/lossy"
+    sections_cited: ["§3 four critique areas"]
+    sections_verified: []
+    used_by_features: ["blackboard_implementation"]
+    notes: "Section numbers NOT yet verified against original"
+
+  - id: "E2"
+    title: "Towards a Science of Scaling Agent Systems"
+    authors: ["Yubin Kim", "Samuel Schmidgall", "Yuchen Zhuang", "Yuzhe Yang", "et al."]
+    year: 2025
+    arxiv_id: "2512.08296"
+    url: "https://arxiv.org/abs/2512.08296"
+    venue: "Multi-institution (Google DeepMind + Google Research + MIT + others)"
+    status: verified
+    must_read: true
+    category: opposing
+    key_claims:
+      - "Coordination cost T=2.72*(n+0.5)^1.724 (R2=0.974, 95% CI [1.685,1.763])"
+      - "Effective team size: ~3-4 agents"
+      - "Single agent accuracy >45% -> diminishing returns from additional agents"
+      - "Tool-heavy environments: MAS efficiency 2-6x penalty (Ec=0.074 to 0.234)"
+    sections_cited: ["§4 Experiments & Results (§4.3 Scaling Principles)"]
+    sections_verified: ["§4 Experiments & Results", "§4.3 Scaling Principles", "§5 Limitations"]
+    used_by_features: ["scaling_and_lazy_loading"]
+    verified_date: "2026-04-15"
+    notes: "'10+ tools' threshold may not be verbatim in paper"
+
+  - id: "E3"
+    title: "Rethinking Mixture-of-Agents: Is Mixing Different Large Language Models Beneficial?"
+    authors: ["Wenzhe Li et al."]
+    year: 2025
+    arxiv_id: "2502.00674"
+    url: "https://arxiv.org/abs/2502.00674"
+    status: unverified
+    must_read: false
+    category: opposing
+    key_claims:
+      - "Self-MoA (same model) > MoA (different models) on AlpacaEval 2.0 by +6.6%"
+      - "MMLU, CRUX, MATH average +3.8%"
+      - "Quality trumps diversity — mixing weak models lowers average quality"
+    sections_cited: ["전체"]
+    sections_verified: []
+    used_by_features: ["multi_model_assignment"]
+    notes: "Contradicts A3 (Hegazy). Resolution: same role=same model, different role=different model"
+
+  - id: "E4"
+    title: "Prompting Science Report 4: Playing Pretend: Expert Personas Don't Improve Factual Accuracy"
+    authors: ["Basil et al."]
+    year: 2025
+    ssrn_id: "5879722"
+    url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5879722"
+    status: unverified
+    must_read: true
+    category: opposing
+    key_claims:
+      - "Expert persona -> no improvement in reasoning/factual accuracy, up to 30pp decline possible"
+      - "R2 < 0.10 (explains <10% of performance variance)"
+    sections_cited: ["전체"]
+    sections_verified: []
+    used_by_features: ["agent_prompts"]
+    notes: "Section numbers NOT yet verified"
+
+  - id: "E5"
+    title: "Should we be going MAD? A Look at Multi-Agent Debate Strategies for LLMs"
+    authors: ["Smit et al."]
+    year: 2024
+    arxiv_id: "2311.17371"
+    url: "https://arxiv.org/abs/2311.17371"
+    venue: "ICML 2024"
+    status: unverified
+    must_read: false
+    category: opposing
+    key_claims:
+      - "Basic MAD often doesn't beat self-consistency"
+      - "MAD is highly sensitive to hyperparameters"
+    sections_cited: ["§4 convergence analysis"]
+    sections_verified: []
+    used_by_features: ["convergence"]
+    notes: "Section numbers NOT yet verified"
+
+  - id: "E6"
+    title: "Talk Isn't Always Cheap: Understanding Failure Modes in Multi-Agent Debate"
+    authors: ["Wynn et al."]
+    year: 2025
+    arxiv_id: "2509.05396"
+    url: "https://arxiv.org/abs/2509.05396"
+    venue: "ICML 2025"
+    status: unverified
+    must_read: true
+    category: opposing
+    key_claims:
+      - "Debate can REDUCE accuracy (even when strong model is majority)"
+      - "Models switch correct->incorrect, prioritizing agreement over accuracy"
+      - "Echo chamber / tyranny of majority effects"
+    sections_cited: ["§4 failure mode taxonomy"]
+    sections_verified: []
+    used_by_features: ["debate_protocol"]
+    notes: "Section numbers NOT yet verified"
+
+  - id: "E7"
+    title: "Single-agent or Multi-agent Systems? Why Not Both?"
+    authors: ["Mingyan Gao", "et al."]
+    year: 2025
+    arxiv_id: "2505.18286"
+    url: "https://arxiv.org/abs/2505.18286"
+    status: unverified
+    must_read: false
+    category: opposing
+    key_claims:
+      - "MAS tokens: 2-12x (decoding), 4-220x (prefill) vs SAS"
+      - "~80% cases: SAS = MAS (Both Pass or Both Fail)"
+      - "Hybrid routing: accuracy +1.1-12%, cost -88.1%"
+    sections_cited: []
+    used_by_features: ["scaling_and_lazy_loading"]
+
+  - id: "E8"
+    title: "Why Do Multi-Agent LLM Systems Fail?"
+    authors: ["Cemri et al."]
+    year: 2025
+    arxiv_id: "2503.13657"
+    url: "https://arxiv.org/abs/2503.13657"
+    status: unverified
+    must_read: false
+    category: opposing
+    key_claims:
+      - "ChatDev accuracy as low as 25%"
+      - "14 unique failure modes in 3 categories (system design, inter-agent mismatch, task verification)"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "E9"
+    title: "From Spark to Fire: Modeling and Mitigating Error Cascades in LLM-Based Multi-Agent Collaboration"
+    authors: []
+    year: 2026
+    arxiv_id: "2603.04474"
+    url: "https://arxiv.org/abs/2603.04474"
+    status: unverified
+    must_read: false
+    category: opposing
+    key_claims:
+      - "Unstructured MAS: error amplification 17.2x vs single agent"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "E10"
+    title: "AgentArk: Distilling Multi-Agent Intelligence into a Single LLM Agent"
+    authors: []
+    year: 2026
+    arxiv_id: "2602.03955"
+    url: "https://arxiv.org/abs/2602.03955"
+    status: unverified
+    must_read: false
+    category: opposing
+    key_claims:
+      - "Multi-agent debate trajectories -> distillation to single model (SFT + PRM + GRPO)"
+    sections_cited: []
+    used_by_features: []
+
+  # ============================================================
+  # Section F: Sycophancy
+  # ============================================================
+  - id: "F1"
+    title: "Towards Understanding Sycophancy in Language Models"
+    authors: ["Sharma et al."]
+    year: 2024
+    arxiv_id: "2310.13548"
+    url: "https://arxiv.org/abs/2310.13548"
+    venue: "ICLR 2024"
+    status: unverified
+    must_read: false
+    category: sycophancy
+    key_claims:
+      - "Sycophancy confirmed across 5 production AI assistants"
+      - "Responses shift toward user satisfaction under preference conditioning"
+    sections_cited: ["전체"]
+    sections_verified: []
+    used_by_features: ["peer_review_system"]
+
+  # ============================================================
+  # Section G: LLM-as-Judge
+  # ============================================================
+  - id: "G1"
+    title: "A Survey on LLM-as-a-Judge"
+    authors: []
+    year: 2024
+    arxiv_id: "2411.15594"
+    url: "https://arxiv.org/abs/2411.15594"
+    status: unverified
+    must_read: false
+    category: judge
+    key_claims:
+      - "Biases: position, verbosity, sycophancy, bandwagon, concreteness"
+      - "Mitigations: structured rubrics, order swap, multi-agent judge, CoT, Cohen's Kappa"
+    sections_cited: ["§3 bias taxonomy", "§5 mitigations"]
+    sections_verified: []
+    used_by_features: ["peer_review_system"]
+    notes: "Section numbers NOT yet verified"
+
+  - id: "G2"
+    title: "Multi-Agent-as-Judge: Aligning LLM-Agent-Based Automated Evaluation"
+    authors: []
+    year: 2025
+    arxiv_id: "2507.21028"
+    url: "https://arxiv.org/abs/2507.21028"
+    status: unverified
+    must_read: true
+    category: judge
+    key_claims:
+      - "Spearman rho 0.47 (vs baseline 0.15-0.36)"
+      - "Auto persona extraction -> multi-agent in-group debate -> aggregator"
+    sections_cited: ["§3 MAJ-Eval framework"]
+    sections_verified: []
+    used_by_features: ["peer_review_system"]
+    notes: "Section numbers NOT yet verified"
+
+  # ============================================================
+  # Section H: Long Context
+  # ============================================================
+  - id: "H1"
+    title: "Lost in the Middle: How Language Models Use Long Contexts"
+    authors: ["Nelson F. Liu", "Kevin Lin", "John Hewitt", "et al."]
+    year: 2024
+    arxiv_id: "2307.03172"
+    url: "https://arxiv.org/abs/2307.03172"
+    venue: "TACL 2024"
+    status: unverified
+    must_read: true
+    category: context
+    key_claims:
+      - "Middle position info -> 30%+ accuracy drop"
+      - "Start and end positions well-utilized"
+    sections_cited: ["§3 experiments"]
+    sections_verified: []
+    used_by_features: ["context_management"]
+    notes: "Section numbers NOT yet verified"
+
+  - id: "H2"
+    title: "Hidden in the Haystack: Smaller Needles are More Difficult for LLMs to Find"
+    authors: []
+    year: 2025
+    arxiv_id: "2505.18148"
+    url: "https://arxiv.org/abs/2505.18148"
+    status: unverified
+    must_read: false
+    category: context
+    key_claims:
+      - "Shorter gold context -> sharper performance drop across 7 SOTA LLMs"
+    sections_cited: []
+    used_by_features: ["context_management"]
+
+  # ============================================================
+  # Section I: Structured Output
+  # ============================================================
+  - id: "I1"
+    title: "Let Me Speak Freely? A Study on the Impact of Format Restrictions on Performance of LLMs"
+    authors: ["Tam et al."]
+    year: 2024
+    arxiv_id: "2408.02442"
+    url: "https://arxiv.org/abs/2408.02442"
+    status: unverified
+    must_read: true
+    category: structured_output
+    key_claims:
+      - "JSON-mode forces significant reasoning degradation"
+      - "Classification tasks improve with structure"
+      - "Mitigation: Think in NL, Output in Schema hybrid"
+    sections_cited: ["§3 experiments", "§4 mitigations"]
+    sections_verified: []
+    used_by_features: ["structured_output"]
+    notes: "Section numbers NOT yet verified"
+
+  # ============================================================
+  # Section J: Foundational Theory
+  # ============================================================
+  - id: "J1"
+    title: "A General Model of Software Architecture Design Derived from Five Industrial Approaches"
+    authors: ["Hofmeister et al."]
+    year: 2007
+    doi: "10.1016/j.jss.2006.05.024"
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S0164121206001634"
+    status: unverified
+    must_read: false
+    category: theory
+    key_claims:
+      - "Architecture cycle: Analysis <-> Synthesis <-> Evaluation"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "J2"
+    title: "AutoTRIZ: Automating Engineering Innovation with TRIZ and Large Language Models"
+    authors: []
+    year: 2024
+    arxiv_id: "2403.13002"
+    url: "https://arxiv.org/html/2403.13002v2"
+    status: unverified
+    must_read: false
+    category: theory
+    key_claims:
+      - "LLM identifies contradictions -> auto contradiction matrix -> inventive principles"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "J3"
+    title: "TRIZ Agents: A Multi-Agent LLM Approach for TRIZ-Based Innovation"
+    authors: []
+    year: 2025
+    arxiv_id: "2506.18783"
+    url: "https://arxiv.org/html/2506.18783v1"
+    status: unverified
+    must_read: false
+    category: theory
+    key_claims:
+      - "Multi-agent collaborative TRIZ process"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "J4"
+    title: "TRIZ for Software Architecture"
+    authors: ["Kluender"]
+    year: 2011
+    doi: "10.1016/j.proeng.2011.03.107"
+    url: "https://www.sciencedirect.com/science/article/pii/S1877705811001767"
+    status: unverified
+    must_read: false
+    category: theory
+    key_claims:
+      - "TRIZ applied to software architecture domain"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "J5"
+    title: "AI-driven FMEA: Integration of Large Language Models for Faster and More Accurate Risk Analysis"
+    authors: []
+    year: 2025
+    url: "https://www.cambridge.org/core/journals/design-science/article/aidriven-fmea-integration-of-large-language-models-for-faster-and-more-accurate-risk-analysis/22F110A2BF0DB4D01A69472CF17A0B43"
+    status: unverified
+    must_read: false
+    category: theory
+    key_claims:
+      - "LLM-based FMEA for risk analysis"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "J6"
+    title: "One for All: A General Framework of LLMs-based Multi-Criteria Decision Making on Human Expert Level"
+    authors: []
+    year: 2025
+    arxiv_id: "2502.15778"
+    url: "https://arxiv.org/html/2502.15778v1"
+    status: unverified
+    must_read: false
+    category: theory
+    key_claims:
+      - "LoRA fine-tuned MCDM accuracy ~95%"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "J7"
+    title: "Six Thinking Hats and Design Creativity"
+    authors: []
+    year: 2021
+    url: "https://www.sciencedirect.com/science/article/abs/pii/S1871187121001619"
+    status: unverified
+    must_read: false
+    category: theory
+    key_claims:
+      - "Forced thinking mode switching significantly improves creativity"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "J8"
+    title: "LLM + DDD — Eric Evans experiment"
+    authors: ["Eric Evans"]
+    year: 2024
+    url: "https://www.infoq.com/news/2024/03/Evans-ddd-experiment-llm/"
+    status: unverified
+    must_read: false
+    category: theory
+    key_claims:
+      - "DDD creator recommends LLM+DDD experiment"
+      - "Train LLM with ubiquitous language within bounded contexts"
+    sections_cited: []
+    used_by_features: []
+    notes: "Blog/talk reference, not a paper"
+
+  - id: "J9"
+    title: "Human analogical guidance amplifies LLM performance through cross-domain knowledge activation"
+    authors: []
+    year: 2026
+    url: "https://www.nature.com/articles/s41467-026-70873-7"
+    venue: "Nature Communications"
+    status: unverified
+    must_read: false
+    category: theory
+    key_claims:
+      - "Human analogy guidance -> LLM performance 10x improvement"
+    sections_cited: []
+    used_by_features: []
+
+  # ============================================================
+  # Section K: Misc
+  # ============================================================
+  - id: "K1a"
+    title: "Benchmarking LLMs' Swarm intelligence"
+    authors: []
+    year: 2025
+    arxiv_id: "2505.04364"
+    url: "https://arxiv.org/abs/2505.04364"
+    status: unverified
+    must_read: false
+    category: misc
+    key_claims:
+      - "LLMs fail severely at distributed coordination tasks"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "K1b"
+    title: "MAS Swarm Intelligence"
+    authors: []
+    year: 2025
+    arxiv_id: "2503.03800"
+    url: "https://arxiv.org/abs/2503.03800"
+    status: unverified
+    must_read: false
+    category: misc
+    key_claims: []
+    sections_cited: []
+    used_by_features: []
+
+  - id: "K3"
+    title: "LLM-Based MAS for Software Engineering Survey"
+    authors: []
+    year: 2024
+    url: "https://dl.acm.org/doi/10.1145/3712003"
+    venue: "ACM TOSEM"
+    status: unverified
+    must_read: false
+    category: misc
+    key_claims:
+      - "41 primary studies analyzed"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "K4"
+    title: "An LLM-assisted approach to designing software architectures using ADD"
+    authors: []
+    year: 2025
+    arxiv_id: "2506.22688"
+    url: "https://arxiv.org/abs/2506.22688"
+    status: unverified
+    must_read: false
+    category: misc
+    key_claims: []
+    sections_cited: []
+    used_by_features: []
+
+  - id: "K5"
+    title: "CodeAgents: A Token-Efficient Framework for Codified Multi-Agent Reasoning in LLMs"
+    authors: []
+    year: 2025
+    arxiv_id: "2507.03254"
+    url: "https://arxiv.org/abs/2507.03254"
+    status: unverified
+    must_read: false
+    category: misc
+    key_claims:
+      - "Token-efficient multi-agent > traditional prompting"
+    sections_cited: []
+    used_by_features: []
+
+  - id: "K6"
+    title: "Rethinking Bounds of LLM Reasoning"
+    authors: []
+    year: 2024
+    url: "https://aclanthology.org/2024.acl-long.331/"
+    venue: "ACL 2024"
+    status: unverified
+    must_read: false
+    category: misc
+    key_claims:
+      - "Multi-agent is competitive with (not clearly superior to) single agent"
+    sections_cited: []
+    used_by_features: []

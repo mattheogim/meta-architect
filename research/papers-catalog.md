@@ -14,24 +14,25 @@
 - **출처**: ICML 2024 (arXiv: 2305.14325)
 - **URL**: https://arxiv.org/abs/2305.14325
 - **핵심 수치**:
-  - 3 에이전트 × 2 라운드 토론 → single-agent CoT 대비 **5~10% 절대 정확도 향상** ⚠️
+  - 3 에이전트 × 2 라운드 토론 → single-agent 대비 **+7~16pp 향상** (태스크별 차이 큼) ✅ VERIFIED
+  - Arithmetic: 67→81.8 (+14.8pp), GSM8K: 77→85 (+8pp), MMLU: 63.9→71.1 (+7.2pp)
   - 모델: gpt-3.5-turbo-0301
-  - 태스크: arithmetic, GSM8K, chess reasoning
+  - 태스크: arithmetic, GSM8K, chess reasoning, biographies, MMLU
 - **핵심 방법**: 각 에이전트가 독립적으로 답 생성 → 다른 에이전트의 답을 보고 수정 → 반복
-- **구현 시 읽어야 할 부분**: §3 Method (debate protocol), §4 실험 설정
+- **구현 시 읽어야 할 부분**: §2 Method (debate protocol — "Language Generation through Multiagent Debate"), §3 Experiments ✅ VERIFIED
 - **v2 관련**: Phase 4 adversarial challenge 구조의 직접적 근거
 
 ### A2. 🔴 MUST-READ — Liang et al. (2023)
 - **제목**: Encouraging Divergent Thinking in Large Language Models through Multi-Agent Debate
 - **저자**: Tian Liang, Zhiwei He, Wenxiang Jiao, Xing Wang, Yan Wang, Rui Wang, Yujiu Yang, Zhaopeng Tu, Shuming Shi
-- **출처**: ACL 2024 (arXiv: 2305.19118)
+- **출처**: EMNLP 2024 (arXiv: 2305.19118) ✅ VERIFIED (ACL이 아닌 EMNLP)
 - **URL**: https://arxiv.org/abs/2305.19118
 - **코드**: https://github.com/Skytliang/Multi-Agents-Debate
 - **핵심 발견**:
   - **Degeneration-of-Thought (DoT) 문제** 정의: LLM이 한번 확신하면 reflection으로도 새 사고 불가
   - MAD 프레임워크: agents가 "tit-for-tat" 토론 + judge가 관리
 - **핵심 수치**: commonsense MT와 counter-intuitive arithmetic에서 효과 입증 ⚠️ (구체적 수치는 원문 확인 필요)
-- **구현 시 읽어야 할 부분**: §3.1 DoT 정의, §3.2 MAD 프레임워크 설계, Algorithm 1
+- **구현 시 읽어야 할 부분**: §1 Introduction (DoT 정의), §2 MAD 프레임워크 설계 ✅ VERIFIED (§3.1/§3.2/Algorithm 1은 존재하지 않음)
 - **v2 관련**: 17개 에이전트 분리의 이론적 근거. 왜 self-critique가 아닌 별도 에이전트가 필요한가.
 
 ### A3. 🔴 MUST-READ — Hegazy (2024)
@@ -40,11 +41,11 @@
 - **출처**: arXiv: 2410.12853 (October 2024)
 - **URL**: https://arxiv.org/abs/2410.12853
 - **핵심 수치**:
-  - 다양 모델 3개 (Gemini-Pro 78% + Mixtral-7Bx8 64% + PaLM2-M 70%) → 4라운드 토론 후 **GSM-8K 91%**
-  - 동질 모델 3개 (Gemini-Pro × 3) → **82%** (zero-shot CoT)
+  - 다양 모델 3개 (Gemini-Pro + Mixtral-7Bx8 + PaLM2-M) + 1 summarizer(Gemini-Pro) → 4라운드 토론 후 **GSM-8K 91%** ✅ VERIFIED
+  - 동질 모델 3개 (Gemini-Pro × 3) → **82%** (CoT variant; CoT 없이는 80%) ✅ VERIFIED
   - **다양성 프리미엄: +9%p**
 - **핵심 방법**: Du et al.의 debate framework에 heterogeneous models 적용
-- **구현 시 읽어야 할 부분**: §4 실험 결과 (모델 조합별 비교 테이블)
+- **구현 시 읽어야 할 부분**: §4 Experiments — §4.1 Model Capacity, §4.2 Diversity of Thought (차트/그래프 형식, 테이블 아님) ✅ VERIFIED
 - **v2 관련**: Multi-model 배정 전략의 직접적 근거
 
 ### A4. Wang et al. (2024)
@@ -75,7 +76,7 @@
   - 비정규(irregular) 토폴로지 > 정규(regular) 토폴로지
   - small-world 속성 토폴로지가 최적
 - **핵심 방법**: MacNet — DAG로 에이전트 조직, topological orchestration
-- **구현 시 읽어야 할 부분**: §3 MacNet 설계, §4 Collaborative Scaling Law 수식, Figure 3-4
+- **구현 시 읽어야 할 부분**: §2 MacNet 설계 ("Multi-Agent Collaboration Network"), §3.3 Collaborative Scaling Law 수식 (§3 Evaluation 하위) ✅ VERIFIED
 - **v2 관련**: 17개 에이전트가 과하지 않다는 근거. 토폴로지 설계 참고.
 
 ### B2. Li et al. (2024)
@@ -93,12 +94,12 @@
 
 ### C1. 🔴 MUST-READ — Han & Zhang (2025)
 - **제목**: Exploring Advanced LLM Multi-Agent Systems Based on Blackboard Architecture
-- **저자**: Bochen Han, Songmao Zhang et al.
+- **저자**: Bochen Han, Songmao Zhang (2인 — et al. 아님) ✅ VERIFIED
 - **출처**: arXiv: 2507.01701 (July 2025)
 - **URL**: https://arxiv.org/abs/2507.01701
 - **핵심 수치**: commonsense, reasoning, math에서 SOTA MAS와 경쟁 + **더 적은 토큰** ⚠️ 구체적 수치 원문 확인
 - **핵심 방법**: LLM 에이전트(decider, planner, critic, conflict-resolver, cleaner)가 Blackboard 통해 소통
-- **구현 시 읽어야 할 부분**: §3 아키텍처 설계, §4 에이전트 역할 정의, §5 실험 결과
+- **구현 시 읽어야 할 부분**: §3 Method (아키텍처 + 에이전트 역할 모두 포함: §3.2 Blackboard Cycle에 5개 역할 정의), §4 Experiments ✅ VERIFIED
 - **v2 관련**: Blackboard 패턴의 현대적 LLM 적용 검증. v2 구현 시 반드시 참고.
 
 ### C2. Li et al. (2025)
@@ -151,11 +152,12 @@
 - **출처**: arXiv: 2512.08296
 - **URL**: https://arxiv.org/html/2512.08296v1
 - **핵심 수치**:
-  - 조정 비용 = 에이전트 수의 **1.724승**으로 증가
-  - 실효 팀 크기: **~3~4개**
-  - 싱글 에이전트 정확도 **>45%** 이면 추가 에이전트의 수익 체감/역전
-  - tool-heavy 환경(10+ tools): MAS 효율 **2~6배 하락**
-- **구현 시 읽어야 할 부분**: §4 Scaling Law 수식, §5 실효 팀 크기 분석
+  - 조정 비용 T=2.72×(n+0.5)^**1.724** (R²=0.974, 95% CI [1.685,1.763]) ✅ VERIFIED
+  - 실효 팀 크기: **~3~4개** ✅ VERIFIED
+  - 싱글 에이전트 정확도 **>45%** 이면 추가 에이전트의 수익 체감/역전 ✅ VERIFIED
+  - tool-heavy 환경: MAS 효율 **2~6배 하락** (Ec=0.074~0.234) ✅ VERIFIED ("10+ tools" 문구는 원문에 없을 수 있음)
+- **소속**: 다기관 협업 (Google DeepMind + Google Research + MIT 등) ✅ VERIFIED — 단독 DeepMind 아님
+- **구현 시 읽어야 할 부분**: §4 Experiments & Results (Scaling principles는 §4.3), §5 Limitations ✅ VERIFIED
 - **v2에 대한 함의**: Lazy Loading(동시 활성 2~4개)이 이 비판을 이미 회피할 수 있음
 
 ### E3. Li et al. (2025)
