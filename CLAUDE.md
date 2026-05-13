@@ -62,59 +62,59 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 ## 5. Paper-Based Implementation Rule
 
-**이 프로젝트의 기능은 특정 논문에 근거한다. 논문을 안 읽고 구현하면 hallucination이다.**
+**This project's features are grounded in specific papers. Implementing without reading the paper is hallucination.**
 
-논문 기반 기능을 구현할 때:
-1. `research/paper-feature-map.json`에서 해당 기능의 `required_papers`를 확인
-2. 각 논문의 arxiv HTML 또는 PDF를 `WebFetch`/`Read`로 **직접 읽기**
-3. 핵심 수치/알고리즘을 원문에서 추출하여 코드 주석에 인용
-4. "기억"이나 "요약"에 의존하지 말 것 -- 반드시 원문 확인
-5. `research/verified/{paper_id}.md`에 읽기 완료 기록 남기기
+When implementing paper-based features:
+1. Check `required_papers` for the feature in `research/paper-feature-map.json`
+2. **Directly read** each paper's arxiv HTML or PDF via `WebFetch`/`Read`
+3. Extract key numbers/algorithms from the original text and cite in code comments
+4. Do not rely on "memory" or "summaries" — always verify against the original
+5. Record reading completion in `research/verified/{paper_id}.md`
 
-**위반 시**: `research/check_paper_deps.py` hook이 경고를 발생시킨다.
+**On violation**: The `research/check_paper_deps.py` hook raises a warning.
 
 ## 6. Experiment Protocol
 
-**모든 시스템 실행은 ExperimentRunner를 통해야 한다.**
+**All system runs must go through ExperimentRunner.**
 
-- `meta_architect.run()` 직접 호출 금지 — `ExperimentRunner.run(config)`만 허용
-- 모든 실행은 `eval/experiments/{EXP}/runs/`에 자동 저장
-- 실행 후 metrics 자동 계산 + LLM-as-Judge 자동 평가
-- 논문 테이블/그래프 재생성: `python eval/paper/generate_tables.py`
-- `PRE-REGISTRATION.md` 확정 후 가설/분석 계획 수정 금지 (HARKing 방지)
-- 사후 변경은 반드시 `DEVIATIONS.md`에 기록
+- No direct `meta_architect.run()` calls — only `ExperimentRunner.run(config)` is allowed
+- All runs are auto-saved to `eval/experiments/{EXP}/runs/`
+- After each run: automatic metrics computation + automatic LLM-as-Judge evaluation
+- Regenerate paper tables/figures: `python eval/paper/generate_tables.py`
+- Do not modify hypotheses/analysis plan after `PRE-REGISTRATION.md` is finalized (HARKing prevention)
+- Any post-hoc changes must be recorded in `DEVIATIONS.md`
 
 ## 7. 4 Thinking Modes
 
-모든 작업에서 4가지 모드를 의식적으로 전환한다. 상세: `THINKING-MODES.md`
+Consciously switch between 4 modes in all work. Details: `THINKING-MODES.md`
 
 ```
-BUILD (만들어)  →  설계, 구현, 플랜
-BREAK (부숴봐)  →  공격, 반박, 리스크. "이게 실패했다면 왜?"
-ZOOM  (더 봐)   →  빠진 것, 다음 단계. "안 물어본 질문은?"
-FLIP  (뒤집어)  →  반대, 가정 의심. "최악으로 만들려면?"
+BUILD (create)  →  design, implement, plan
+BREAK (attack)  →  attack, counter, risk. "If this failed, why?"
+ZOOM  (look further)  →  what's missing, what's next. "What question haven't I asked?"
+FLIP  (reverse)  →  opposite, question assumptions. "How to make this worst?"
 ```
 
-적용 기준:
-- **Type 1 결정** (되돌리기 어려움): BUILD + BREAK + FLIP 전부
-- **Type 2 결정** (되돌리기 쉬움): BUILD만. 바로 실행.
-- 판단: "이걸 잘못 정하면 1주일 이상 되돌리기 어려운가?"
-- **절대 하면 안 되는 것**: BUILD만 하고 BREAK를 안 하기 (confirmation bias)
+Application criteria:
+- **Type 1 decisions** (hard to reverse): all of BUILD + BREAK + FLIP
+- **Type 2 decisions** (easy to reverse): BUILD only. Execute immediately.
+- Judgment: "Would it take more than 1 week to reverse if wrong?"
+- **Never do**: BUILD only without BREAK (confirmation bias)
 
-## 8. Claim Tagging (Hallucination 방지)
+## 8. Claim Tagging (Hallucination Prevention)
 
-**모든 핵심 주장에 출처 + 유형 + 검증 상태 태그를 붙인다.**
+**Every core claim gets a source + type + verification status tag.**
 
-문서(설계서, 플랜, 리서치)에 주장을 쓸 때:
-- `[src:X]` — 출처 (예: `[src:paper-A1]`, `[src:v2-§3.1]`, `[src:deep-3]`)
-- `[FACT]` / `[DECISION]` / `[ASSUMPTION]` / `[DERIVED]` / `[EMPIRICAL]` — 주장 유형
-- `[VERIFIED]` / `[UNVERIFIED]` — 검증 상태
+When writing claims in documents (design docs, plans, research):
+- `[src:X]` — source (e.g., `[src:paper-A1]`, `[src:v2-§3.1]`, `[src:deep-3]`)
+- `[FACT]` / `[DECISION]` / `[ASSUMPTION]` / `[DERIVED]` / `[EMPIRICAL]` — claim type
+- `[VERIFIED]` / `[UNVERIFIED]` — verification status
 
-규칙:
-- 수치가 있으면 반드시 `[src:]` — "91%"는 어디서 나온 91%인가?
-- `[UNVERIFIED]` 수치로 코드를 짜지 말 것
-- 태그 없는 주장 = hallucination 후보 → 리뷰 시 우선 확인
-- 상세 규칙: `research/TAGGING-SYSTEM.md`
+Rules:
+- Any number must have `[src:]` — where does the "91%" come from?
+- Do not write code based on `[UNVERIFIED]` numbers
+- Untagged claim = hallucination candidate → check first during review
+- Detailed rules: `research/TAGGING-SYSTEM.md`
 
 ---
 

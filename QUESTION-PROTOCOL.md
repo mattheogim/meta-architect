@@ -1,77 +1,77 @@
-# Question Protocol — 자동화된 질문 체크리스트
+# Question Protocol — automated question checklist
 
-> 매 세션, 매 Phase, 매 결정에서 자동으로 적용하는 질문 프로토콜.
-> 사용자가 매번 "반박도 찾아", "빠진 거 없어?"를 수동으로 물어볼 필요 없이,
-> 이 프로토콜이 CLAUDE.md에 등록되어 자동 적용된다.
+> Question protocol automatically applied every session, every Phase, every decision.
+> Instead of the user manually asking "find counter-evidence too", "anything missing?" every time,
+> this protocol is registered in CLAUDE.md and applied automatically.
 
 ---
 
-## 1. 세션 시작 프로토콜
+## 1. Session start protocol
 
-새 세션이 시작되면 **자동으로** 다음을 수행:
-
-```
-[ ] NEXT-SESSION.md 읽기
-[ ] SESSION-LOG.md 이전 세션 확인
-[ ] Pre-mortem: "이번 세션의 목표가 실패한다면 왜?"
-[ ] 안 물어본 질문: "지금까지 아직 안 다룬 가장 중요한 질문 3개는?"
-```
-
-## 2. 리서치 프로토콜
-
-무언가를 조사할 때 **자동으로** 양쪽을 찾는다:
+When a new session begins, **automatically** do the following:
 
 ```
-단계 1 (발산): 가능한 모든 접근법/관점 수집 — 필터 없이
-단계 2 (지지): 이 접근을 지지하는 증거 (논문, 사례, 데이터)
-단계 3 (반박): 이 접근을 반박하는 증거 — 반드시 같은 노력으로
-단계 4 (수렴): 양쪽을 종합하여 결론. 모순이 있으면 명시
-단계 5 (반전): "이걸 최악으로 만들려면?" — Inversion check
+[ ] Read NEXT-SESSION.md
+[ ] Check the previous session in SESSION-LOG.md
+[ ] Pre-mortem: "If this session's goal failed, why?"
+[ ] Unasked questions: "Top 3 most important questions not yet addressed?"
 ```
 
-**절대 단계 2만 하고 끝내지 말 것. 단계 3 없는 리서치는 confirmation bias.**
+## 2. Research protocol
 
-## 3. 결정 프로토콜
-
-결정을 내릴 때 **자동으로** 다음을 체크:
+When investigating something, **automatically** look at both sides:
 
 ```
-[ ] 5 Whys: "왜 이 결정이야?" × 5 — 근본 이유 도달
-[ ] Inversion: "반대를 선택하면 뭐가 좋아?"
-[ ] Pre-mortem: "이 결정이 6개월 후 실패했다. 가장 큰 이유는?"
-[ ] 태그: [DECISION][src:근거] 붙이기
-[ ] SESSION-LOG.md 결정 로그에 기록
+Stage 1 (diverge): collect every possible approach/perspective — without filter
+Stage 2 (support): evidence supporting this approach (papers, cases, data)
+Stage 3 (counter): evidence opposing this approach — with equal effort, mandatory
+Stage 4 (converge): synthesize both sides into a conclusion. Note contradictions
+Stage 5 (invert): "How would you make this worst?" — Inversion check
 ```
 
-## 4. 구현 프로토콜
+**Never stop after stage 2. Research without stage 3 is confirmation bias.**
 
-코드를 짤 때 **자동으로** 다음을 체크:
+## 3. Decision protocol
 
-```
-[ ] 논문 읽었나? (check_paper_deps.py hook)
-[ ] Feynman: "이 코드가 뭘 하는지 한 문장으로 설명 가능?"
-[ ] 5 Hows: "어떻게 이걸 테스트?" → "어떻게 이걸 깨뜨려?"
-[ ] 가장 단순한 구현인가? (CLAUDE.md §2)
-```
-
-## 5. 평가 프로토콜
-
-무언가를 평가할 때 **자동으로**:
+When making a decision, **automatically** check:
 
 ```
-[ ] 자체 평가: 10점 만점 점수 + 근거
-[ ] 리젝 사유: "ICSE 리뷰어라면 이걸 왜 리젝해?"
-[ ] 빠진 것: "이 평가에서 안 다룬 가장 중요한 것은?"
-[ ] 비교: "가장 단순한 대안과 비교하면?"
+[ ] 5 Whys: "Why this decision?" × 5 — reach the root reason
+[ ] Inversion: "What's good about choosing the opposite?"
+[ ] Pre-mortem: "This decision failed 6 months later. Biggest reason?"
+[ ] Tag: attach [DECISION][src:source]
+[ ] Record in SESSION-LOG.md decision log
 ```
 
-## 6. 세션 종료 프로토콜
+## 4. Implementation protocol
 
-세션 끝날 때 **자동으로**:
+When writing code, **automatically** check:
 
 ```
-[ ] SESSION-LOG.md 업데이트 (변경/결정/오류/미해결)
-[ ] NEXT-SESSION.md 업데이트
-[ ] 안 물어본 질문: "이번 세션에서 안 다룬 가장 중요한 것은?"
-[ ] git commit + push (요청 시)
+[ ] Have you read the paper? (check_paper_deps.py hook)
+[ ] Feynman: "Can you explain what this code does in one sentence?"
+[ ] 5 Hows: "How would you test this?" → "How would you break this?"
+[ ] Is this the simplest implementation? (CLAUDE.md §2)
+```
+
+## 5. Evaluation protocol
+
+When evaluating something, **automatically**:
+
+```
+[ ] Self-rating: score out of 10 + rationale
+[ ] Reject reason: "If you were an ICSE reviewer, why would you reject this?"
+[ ] What's missing: "What's the most important thing not addressed in this evaluation?"
+[ ] Compare: "Compared to the simplest alternative?"
+```
+
+## 6. Session end protocol
+
+At the end of a session, **automatically**:
+
+```
+[ ] Update SESSION-LOG.md (changes/decisions/errors/open items)
+[ ] Update NEXT-SESSION.md
+[ ] Unasked questions: "What's the most important thing not addressed this session?"
+[ ] git commit + push (on request)
 ```

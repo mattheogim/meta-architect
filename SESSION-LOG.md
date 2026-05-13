@@ -1,206 +1,206 @@
 # Session Log
 
-> 각 세션에서 한 일, 결정, 오류, 다음 할 일을 기록한다.
-> QOC 형식이 아닌 **변경 로그 + 결정 로그 + 오류 로그** 분리 방식.
-> 이유: QOC는 설계 결정용이고, 세션 기록은 작업 추적용이다. 목적이 다르다.
+> Records work done, decisions, errors, and next steps for each session.
+> Not QOC format but a **change log + decision log + error log** separated approach.
+> Reason: QOC is for design decisions; session records are for work tracking. Different purposes.
 
 ---
 
-## Session 1 — 2026-04-15 (이번 세션)
+## Session 1 — 2026-04-15 (this session)
 
-### 요약
-v2 설계서 기반으로 전면 리서치 수행 → 플랜 수립 → 실험 프레임워크 코드화 → hallucination 방지 시스템 구축.
+### Summary
+Conducted comprehensive research grounded in the v2 design doc → developed plan → codified the experiment framework → built hallucination-prevention system.
 
-### 변경 로그 (생성/수정된 파일)
+### Change log (created/modified files)
 
-| 파일 | 행동 | 내용 |
+| File | Action | Content |
 |------|------|------|
-| `CLAUDE.md` | 생성 | 행동 가이드라인 §1-4 + §5 논문 강제 + §6 실험 프로토콜 + §7 태그 규칙 |
-| `PRE-REGISTRATION.md` | 생성 | 가설 H1~H4 + 분석 계획 + HARKing 방지 |
-| `research/00-research-index.md` | 생성 | 전체 리서치 인덱스 (완료/진행중) |
-| `research/papers-catalog.md` | 생성 | 45+ 논문, 11 섹션, MUST-READ 12편 식별 |
-| `research/paper-feature-map.json` | 생성 | 11개 기능 × 필수 논문 매핑 |
-| `research/check_paper_deps.py` | 생성 | PreToolUse hook: 구현 시 논문 읽기 강제 |
-| `research/validate_claims.py` | 생성 | PostToolUse hook: 태그↔출처 정합성 자동 체크 |
-| `research/TAGGING-SYSTEM.md` | 생성 | [src:][FACT][VERIFIED] 태그 규칙 |
-| `research/deep-{1..8}.md` | 생성 | Deep Research 8건 |
-| `research/MASTER-PLAN.md` | 생성→v2 | 최종 실행 계획 (19개 수정 반영) |
-| `research/MASTER-PLAN-v1.md` | 보존 | v1 플랜 (수정 전) |
-| `research/MASTER-PLAN-REVIEW.md` | 생성 | 플랜 자체 평가 (6.1/10) |
-| `research/EXPERIMENT-DESIGN.md` | 생성 | 논문용 실험 설계 (4실험, 252회) |
-| `eval/experiment_config.py` | 생성 | 실험 매트릭스 자동 생성 (252회 검증) |
-| `eval/experiment_runner.py` | 생성 | 실험 실행 wrapper (유일 진입점) |
-| `eval/auto_measure.py` | 생성 | 자동 측정 (coverage, cost, latency 등) |
-| `eval/maj_eval.py` | 생성 | LLM-as-Judge (3 persona, Cohen's κ) |
-| `eval/paper/generate_tables.py` | 생성 | 논문 Table 1-3 + Figure 1 (logistic fit) |
-| `eval/scenarios/*.yaml` | 생성 | 5개 표준 시나리오 |
-| `eval/judges/rubric.yaml` | 생성 | 평가 루브릭 (고정) |
-| `.claude/settings.local.json` | 수정 | hook 등록 (check_paper_deps + validate_claims) |
-| `research/verified/` | 생성 | 빈 디렉토리 (논문 읽기 완료 마킹용) |
-| `SESSION-LOG.md` | 생성 | 이 파일 |
+| `CLAUDE.md` | created | Behavioral guidelines §1-4 + §5 paper enforcement + §6 experiment protocol + §7 tag rules |
+| `PRE-REGISTRATION.md` | created | Hypotheses H1-H4 + analysis plan + HARKing prevention |
+| `research/00-research-index.md` | created | Full research index (completed/in-progress) |
+| `research/papers-catalog.md` | created | 45+ papers, 11 sections, 12 MUST-READ identified |
+| `research/paper-feature-map.json` | created | 11 features × required-papers mapping |
+| `research/check_paper_deps.py` | created | PreToolUse hook: enforce paper reading at implementation |
+| `research/validate_claims.py` | created | PostToolUse hook: automatic tag-to-source consistency check |
+| `research/TAGGING-SYSTEM.md` | created | [src:][FACT][VERIFIED] tagging rules |
+| `research/deep-{1..8}.md` | created | 8 Deep Research notes |
+| `research/MASTER-PLAN.md` | created→v2 | Final execution plan (19 revisions applied) |
+| `research/MASTER-PLAN-v1.md` | preserved | v1 plan (before revisions) |
+| `research/MASTER-PLAN-REVIEW.md` | created | Plan self-evaluation (6.1/10) |
+| `research/EXPERIMENT-DESIGN.md` | created | Paper-grade experiment design (4 experiments, 252 runs) |
+| `eval/experiment_config.py` | created | Automatic experiment matrix generation (252 runs verified) |
+| `eval/experiment_runner.py` | created | Experiment runner wrapper (sole entry point) |
+| `eval/auto_measure.py` | created | Automatic measurement (coverage, cost, latency, etc.) |
+| `eval/maj_eval.py` | created | LLM-as-Judge (3 personas, Cohen's κ) |
+| `eval/paper/generate_tables.py` | created | Paper Table 1-3 + Figure 1 (logistic fit) |
+| `eval/scenarios/*.yaml` | created | 5 standard scenarios |
+| `eval/judges/rubric.yaml` | created | Evaluation rubric (fixed) |
+| `.claude/settings.local.json` | modified | Hook registration (check_paper_deps + validate_claims) |
+| `research/verified/` | created | Empty directory (for marking completed paper reads) |
+| `SESSION-LOG.md` | created | This file |
 
-### 결정 로그
+### Decision log
 
-| ID | 결정 | 이유 | 대안 | 근거 |
+| ID | Decision | Reason | Alternatives | Evidence |
 |----|------|------|------|------|
-| D1 | 17개 에이전트 유지 | Lazy Loading으로 동시 2~4개. 관심사 분리가 핵심 가치 | 3~6개로 축소 | [src:paper-B1][src:v2-전체] |
-| D2 | MVP-first (3-agent → 확장) | 전체 구축 후 평가는 실패 리스크 높음 | 바로 17개 구현 | [src:review-C1] |
-| D3 | LLM-as-Judge (전문가 대체) | 전문가 3명 섭외 비현실적 | 전문가 blind review | [src:paper-G2][src:review-C3] |
-| D4 | 초기 All-Sonnet → 실험 후 모델 결정 | Hegazy vs Li 모순 미해결. 데이터로 결정 | 처음부터 Mixed-Model | [src:paper-A3][src:paper-E3] |
-| D5 | Blackboard=데이터, Phase=제어 분리 명시 | "자유 기여" vs "순서 강제" 모순 해결 | 하나를 포기 | [src:review-M4] |
-| D6 | RAG는 v2로 defer, v1은 web_search | RAG pipeline은 별도 프로젝트 수준 | 바로 RAG 구축 | [src:review-M5] |
-| D7 | Think in NL, Write in Schema | JSON 강제 시 추론 10~15% 하락 | 전부 JSON | [src:paper-I1] |
-| D8 | 태그 + Cross-Reference Validator | 태그만으로는 검증 불가. Assertion DB는 과잉 | Assertion DB / 태그만 | 실용성 판단 |
-| D9 | QOC 미해결 4개 모두 유지 | 제거 비용 > 유지 비용 | 제거 | [src:qoc-§미해결] |
+| D1 | Keep 17 agents | Lazy Loading runs 2-4 concurrently. Separation of concerns is the core value | Reduce to 3-6 | [src:paper-B1][src:v2-overall] |
+| D2 | MVP-first (3-agent → expand) | Build-all-then-evaluate has high failure risk | Implement all 17 from start | [src:review-C1] |
+| D3 | LLM-as-Judge (replacing experts) | Recruiting 3 domain experts is unrealistic | Expert blind review | [src:paper-G2][src:review-C3] |
+| D4 | Start All-Sonnet → decide model after experiments | Hegazy vs Li contradiction unresolved. Let data decide | Mixed-Model from the start | [src:paper-A3][src:paper-E3] |
+| D5 | Make explicit: Blackboard=data, Phase=control | Resolves "free contribution" vs "enforced order" contradiction | Give one up | [src:review-M4] |
+| D6 | Defer RAG to v2, v1 uses web_search | RAG pipeline is itself a project-level effort | Build RAG now | [src:review-M5] |
+| D7 | Think in NL, Write in Schema | Forcing JSON drops reasoning by 10-15% | All JSON | [src:paper-I1] |
+| D8 | Tag + Cross-Reference Validator | Tags alone cannot verify. Assertion DB is overkill | Assertion DB / tag-only | Pragmatic judgment |
+| D9 | Keep all 4 unresolved QOC | Removal cost > retention cost | Remove | [src:qoc-§unresolved] |
 
-### 오류 로그
+### Error log
 
-| ID | 오류 | 발생 시점 | 원인 | 해결 |
+| ID | Error | Occurred at | Cause | Resolution |
 |----|------|----------|------|------|
-| E1 | 초기 리서치가 v2 의도를 안 읽고 "줄이면 되지" 접근 | Tier 0 리서치 | v2의 "왜 별도 에이전트인가" 근거를 안 읽음 | 사용자 지적 → v2 재분석 → 논문 재검색 |
-| E2 | 논문 인용 시 실제 검색 없이 기억에 의존 | 첫 번째 논문 리서치 에이전트 | 에이전트에 WebSearch 권한 없었음 | 직접 WebSearch로 전환 |
-| E3 | hook 스키마 오류 (settings.json) | hook 등록 | `hooks` 배열 구조를 잘못 씀 (중첩 필요) | 스키마 에러 메시지로 수정 |
-| E4 | hook이 사라짐 (settings.local.json 덮어쓰기) | 이후 작업 중 | 사용자/시스템이 permissions만 있는 버전으로 덮어씀 | 재등록 |
-| E5 | pydantic 미설치 | experiment_config.py 테스트 | 시스템 Python에 미설치 | pip3 install --break-system-packages |
+| E1 | Early research took a "just reduce them" approach without reading v2's intent | Tier 0 research | Didn't read v2's "why separate agents" rationale | User pointed it out → re-analyzed v2 → re-searched papers |
+| E2 | First paper-research agent cited papers from memory without actual search | First paper research agent | Agent lacked WebSearch permission | Switched to direct WebSearch |
+| E3 | Hook schema error (settings.json) | Hook registration | Incorrect `hooks` array structure (needed nesting) | Fixed using schema error message |
+| E4 | Hooks disappeared (settings.local.json overwritten) | During later work | User/system overwrote with permissions-only version | Re-registered |
+| E5 | pydantic not installed | experiment_config.py test | Not installed in system Python | pip3 install --break-system-packages |
 
-### 후반부 추가 작업 (Session 1 후반)
+### Late-session additional work (Session 1, second half)
 
-| 파일 | 행동 | 내용 |
+| File | Action | Content |
 |------|------|------|
-| `QUESTION-PROTOCOL.md` | 생성 | 6개 프로토콜 (세션/리서치/결정/구현/평가/종료) |
-| `THINKING-MODES.md` | 생성 | 4 Thinking Modes (BUILD/BREAK/ZOOM/FLIP) 상세 |
-| `THINKING-MODES-PORTABLE.md` | 생성 | 복사붙여넣기용 범용 프롬프트 (한계점 포함) |
-| `eval/decision_gate.py` | 생성 | BREAK 모드 하드코드 강제 (Pydantic ValidationError) |
+| `QUESTION-PROTOCOL.md` | created | 6 protocols (session/research/decision/implementation/evaluation/end) |
+| `THINKING-MODES.md` | created | Detailed 4 Thinking Modes (BUILD/BREAK/ZOOM/FLIP) |
+| `THINKING-MODES-PORTABLE.md` | created | Copy-paste universal prompt (limitations included) |
+| `eval/decision_gate.py` | created | BREAK mode hardcoded enforcement (Pydantic ValidationError) |
 
-### 후반부 결정 로그
+### Late-session decision log
 
-| ID | 결정 | 이유 |
+| ID | Decision | Reason |
 |----|------|------|
-| D10 | 15개 질문 패턴 → 4 Thinking Modes로 압축 | 개별 패턴 기억 비효율. 모드 전환이 자연스럽게 질문 생성 |
-| D11 | BREAK만 하드코드, 나머지는 프롬프트 | BREAK가 가장 무시되기 쉽고 가장 중요 |
-| D12 | Layer 2 의미 검증은 지금 안 함 | Phase 3 MAJ-Eval에서 커버됨. 지금 추가는 인프라의 인프라 |
-| D13 | 현재 5계층 시스템이 최선 | 구조 강제 60% + 프롬프트 40%. 더 추가해도 수확체감 |
+| D10 | Compressed 15 question patterns → 4 Thinking Modes | Memorizing individual patterns is inefficient. Mode switching naturally generates questions |
+| D11 | Hardcode only BREAK, leave the rest as prompts | BREAK is the most easily ignored and most important |
+| D12 | Skip Layer-2 semantic validation for now | Covered by Phase 3 MAJ-Eval. Adding now is infrastructure of infrastructure |
+| D13 | Current 5-layer system is the best | 60% structural enforcement + 40% prompts. Adding more yields diminishing returns |
 
-### 후반부 오류 로그
+### Late-session error log
 
-| ID | 오류 | 해결 |
+| ID | Error | Resolution |
 |----|------|------|
-| E6 | hook이 다시 사라짐 (settings.local.json) | 재등록. 근본 원인: 다른 edit이 덮어씀 |
+| E6 | Hooks disappeared again (settings.local.json) | Re-registered. Root cause: another edit overwrote |
 
-### 미해결 사항
+### Open items
 
-| ID | 항목 | 상태 | 다음 행동 |
+| ID | Item | Status | Next action |
 |----|------|------|----------|
-| O1 | research/verified/ 비어있음 (12개 MUST-READ 논문 미읽음) | 대기 | Phase 0.5 시작 전 C1, E1, I1 읽기 |
-| O2 | v2 설계서 보강 7+4개 미반영 | 대기 | Phase 0에서 반영 |
-| O3 | validate_claims.py INFO 9개 (태그 없는 수치) | 낮음 | Master Plan에 태그 추가 |
-| O4 | pyproject.toml 미생성 | 대기 | Phase 0 |
-| O5 | src/ 디렉토리 미생성 | 대기 | Phase 0 |
-| O6 | settings.local.json hook이 반복적으로 사라짐 | 반복 | 원인 파악 필요 |
+| O1 | research/verified/ empty (12 MUST-READ papers unread) | pending | Read C1, E1, I1 before starting Phase 0.5 |
+| O2 | v2 design doc reinforcement 7+4 items not applied | pending | Apply in Phase 0 |
+| O3 | validate_claims.py 9 INFO items (untagged numbers) | low | Add tags to Master Plan |
+| O4 | pyproject.toml not created | pending | Phase 0 |
+| O5 | src/ directory not created | pending | Phase 0 |
+| O6 | settings.local.json hooks repeatedly disappear | recurring | Need to find root cause |
 
 ---
 
-## Session 2 — 2026-04-15 (논문 검증 세션)
+## Session 2 — 2026-04-15 (paper verification session)
 
-### 요약
-papers-catalog.md와 paper-feature-map.json의 논문 인용 정확성을 arXiv 원문 대조로 검증. 6개 핵심 논문 spot-check.
+### Summary
+Verified citation accuracy of papers-catalog.md and paper-feature-map.json by cross-checking arXiv originals. Spot-checked 6 core papers.
 
-### 변경 로그
+### Change log
 
-| 파일 | 행동 | 내용 |
+| File | Action | Content |
 |------|------|------|
-| `research/papers-catalog.md` | 수정 | A1,A2,A3,B1,C1,E2 — 섹션 번호, 학회명, 수치 정밀화, ✅ VERIFIED 태그 추가 |
-| `research/paper-feature-map.json` | 수정 | 검증된 섹션 번호로 교체 + `"verified": true` 플래그 추가 |
-| `SESSION-LOG.md` | 수정 | Session 2 추가 |
+| `research/papers-catalog.md` | modified | A1, A2, A3, B1, C1, E2 — refined section numbers, venue names, numbers; added ✅ VERIFIED tag |
+| `research/paper-feature-map.json` | modified | Replaced section numbers with verified ones + added `"verified": true` flag |
+| `SESSION-LOG.md` | modified | Added Session 2 |
 
-### 검증 결과 (Hallucination Audit)
+### Verification result (Hallucination Audit)
 
-**검증 방법**: arXiv 원문을 WebFetch로 직접 접근하여 대조
+**Verification method**: directly accessed arXiv originals via WebFetch and cross-referenced
 
-| 논문 | 존재 | 제목 | 저자 | 핵심수치 | 섹션번호 | 학회 |
+| Paper | Exists | Title | Authors | Key numbers | Section number | Venue |
 |------|------|------|------|----------|----------|------|
 | A1 Du et al. | ✅ | ✅ | ✅ | ⚠️ 5-10%→7-16pp | ❌ §3→§2 | ✅ ICML 2024 |
-| A2 Liang et al. | ✅ | ✅ | ✅ | ✅ | ❌ §3.1/3.2→§1/§2, Algo1 없음 | ❌ ACL→EMNLP |
-| A3 Hegazy | ✅ | ✅ | ✅ | ✅ 91%/82% | ⚠️ 테이블→차트 | ✅ |
+| A2 Liang et al. | ✅ | ✅ | ✅ | ✅ | ❌ §3.1/3.2→§1/§2, no Algo1 | ❌ ACL→EMNLP |
+| A3 Hegazy | ✅ | ✅ | ✅ | ✅ 91%/82% | ⚠️ table→chart | ✅ |
 | B1 Qian et al. | ✅ | ✅ | ✅ | ✅ | ❌ §3/§4→§2/§3.3 | ✅ ICLR 2025 |
-| C1 Han & Zhang | ✅ | ✅ | ⚠️ 2인 not et al. | ✅ | ❌ §3/§4→§3(모두)/§4(실험) | ✅ |
-| E2 DeepMind+ | ✅ | ✅ | ⚠️ 다기관 | ✅ 1.724 정확 | ❌ §4/§5→§4.3/§5(Limitations) | ✅ |
+| C1 Han & Zhang | ✅ | ✅ | ⚠️ 2 authors not et al. | ✅ | ❌ §3/§4→§3(all)/§4(experiments) | ✅ |
+| E2 DeepMind+ | ✅ | ✅ | ⚠️ multi-institution | ✅ 1.724 accurate | ❌ §4/§5→§4.3/§5(Limitations) | ✅ |
 
-**핵심 발견**:
-- 6개 모두 실존 논문, 제목 정확, 핵심 발견 대체로 정확
-- **섹션 번호: 6개 중 5개 틀림** — 전형적 LLM hallucination 패턴
-- 학회명 1개 오류 (ACL→EMNLP)
-- 존재하지 않는 요소 1개 (Algorithm 1)
+**Key findings**:
+- All 6 are real papers, titles accurate, key findings mostly accurate
+- **Section numbers: 5 of 6 wrong** — typical LLM hallucination pattern
+- 1 venue name error (ACL→EMNLP)
+- 1 non-existent element (Algorithm 1)
 
-### 오류 로그
+### Error log
 
-| ID | 오류 | 원인 | 해결 |
+| ID | Error | Cause | Resolution |
 |----|------|------|------|
-| E7 | 섹션 번호 5/6 틀림 | LLM이 "§3이 Method겠지" 추측 | arXiv 원문 대조로 수정 |
-| E8 | A2 학회명 틀림 (ACL→EMNLP) | 기억 의존 | 원문 확인으로 수정 |
-| E9 | A2 Algorithm 1 존재하지 않음 | 기억 의존 | 삭제 |
-| E10 | A1 수치 범위 과소표현 (5-10%→7-16pp) | 기억 의존, 대략적 기술 | 정확한 수치로 교체 |
+| E7 | 5/6 section numbers wrong | LLM guessed "§3 is probably Method" | Corrected via arXiv original cross-reference |
+| E8 | A2 venue wrong (ACL→EMNLP) | Memory reliance | Corrected via original |
+| E9 | A2 Algorithm 1 does not exist | Memory reliance | Removed |
+| E10 | A1 number range underspecified (5-10%→7-16pp) | Memory reliance, approximate description | Replaced with exact numbers |
 
-### Session 2.5 — 2026-04-15 (논문 관리 파이프라인 구축)
+### Session 2.5 — 2026-04-15 (paper management pipeline construction)
 
-#### 요약
-논문 관리 hardcode 방법을 논문+반증 리서치 후, Level 3 전체 파이프라인 구축.
-42개 논문을 YAML로 전환하고 arXiv/S2 API 자동검증 스크립트로 추가 hallucination 9건 발견.
+#### Summary
+After researching paper management hardcode methods + counter-evidence, built full Level 3 pipeline.
+Converted 42 papers to YAML; arXiv/S2 API automatic-verification script found 9 additional hallucinations.
 
-#### 변경 로그
+#### Change log
 
-| 파일 | 행동 | 내용 |
+| File | Action | Content |
 |------|------|------|
-| `research/papers_schema.py` | 생성 | Pydantic 스키마: PaperEntry(4-state 검증) + PaperCatalog + validate_catalog() |
-| `research/papers.yaml` | 생성 | 42개 논문 구조화 YAML (papers-catalog.md 대체) |
-| `research/verify_papers.py` | 생성 | arXiv API + Semantic Scholar API 자동검증 + auto-fill |
+| `research/papers_schema.py` | created | Pydantic schema: PaperEntry (4-state validation) + PaperCatalog + validate_catalog() |
+| `research/papers.yaml` | created | Structured YAML for 42 papers (replaces papers-catalog.md) |
+| `research/verify_papers.py` | created | arXiv API + Semantic Scholar API automatic verification + auto-fill |
 
-#### 자동검증으로 발견된 추가 hallucination
+#### Additional hallucinations found by automatic verification
 
-| 논문 | 오류 유형 | 내가 적은 것 | 실제 |
+| Paper | Error type | What I wrote | Actual |
 |------|----------|-------------|------|
-| E2 | 첫 저자 | Samuel Schmidgall | **Yubin Kim** |
-| E7 | 첫 저자 | Zhao et al. | **Mingyan Gao** |
-| H2 | 제목 | Lost in the Haystack | **Hidden in the Haystack: Smaller Needles...** |
-| J2 | 제목 | AutoTRIZ | **AutoTRIZ: Automating Engineering Innovation...** |
-| J3 | 제목 | TRIZ Agents | **TRIZ Agents: A Multi-Agent LLM Approach...** |
-| J6 | 제목 | LLM + MCDM | **One for All: A General Framework...** |
-| K1a | 제목 | SwarmBench | **Benchmarking LLMs' Swarm intelligence** |
-| K4 | 제목 | LLM-assisted ADD | **An LLM-assisted approach to designing...** |
-| K5 | 제목 | CodeAgents | **CodeAgents: A Token-Efficient Framework...** |
+| E2 | first author | Samuel Schmidgall | **Yubin Kim** |
+| E7 | first author | Zhao et al. | **Mingyan Gao** |
+| H2 | title | Lost in the Haystack | **Hidden in the Haystack: Smaller Needles...** |
+| J2 | title | AutoTRIZ | **AutoTRIZ: Automating Engineering Innovation...** |
+| J3 | title | TRIZ Agents | **TRIZ Agents: A Multi-Agent LLM Approach...** |
+| J6 | title | LLM + MCDM | **One for All: A General Framework...** |
+| K1a | title | SwarmBench | **Benchmarking LLMs' Swarm intelligence** |
+| K4 | title | LLM-assisted ADD | **An LLM-assisted approach to designing...** |
+| K5 | title | CodeAgents | **CodeAgents: A Token-Efficient Framework...** |
 
-#### 리서치 근거 (논문 관리 방법)
+#### Research basis (paper management methods)
 
-| 출처 | 핵심 발견 | 지지/반증 |
+| Source | Key finding | Supports/refutes |
 |------|-----------|----------|
-| 인용오류 메타분석 (PMC12285159, 2025) | 인간 논문 인용 오류율 16.9%, major 8.0% | 지지 — 인간도 못하니 자동화 필요 |
-| GhostCite (arXiv:2602.06718) | LLM 인용 hallucination 14-95% | 지지 — API 검증 필수 |
-| SemanticCite (arXiv:2511.16198) | AI 인용 검증 4단계 분류 | 지지 — 자동화 가능 |
-| Ioannidis (2016) Milbank Q | 기계적 체계화 → 자체가 waste | 반증 — 과잉 인프라 경고 |
-| Cognitive Debt (Storey 2025) | 과도한 자동화 → 깊이 읽기 안 함 | 반증 — 읽기를 대체하면 안 됨 |
-| Automation Bias (PubMed 2016) | 복잡한 검증 → 맹목적 신뢰 | 반증 — 단순하게 유지 |
+| Citation-error meta-analysis (PMC12285159, 2025) | Human paper citation error rate 16.9%, major 8.0% | Supports — humans fail too, so automation needed |
+| GhostCite (arXiv:2602.06718) | LLM citation hallucination 14-95% | Supports — API verification required |
+| SemanticCite (arXiv:2511.16198) | AI citation verification 4-stage classification | Supports — automation feasible |
+| Ioannidis (2016) Milbank Q | Mechanical systematization → itself becomes waste | Refutes — warns against over-infrastructure |
+| Cognitive Debt (Storey 2025) | Over-automation → deep reading is skipped | Refutes — must not replace reading |
+| Automation Bias (PubMed 2016) | Complex verification → blind trust | Refutes — keep it simple |
 
-### 미해결 사항
+### Open items
 
-| ID | 항목 | 상태 | 다음 행동 |
+| ID | Item | Status | Next action |
 |----|------|------|----------|
-| O7 | 36개 논문 미검증 (unverified) | 높음 | 구현 시 해당 논문 검증 |
-| O8 | E1,E3~E6,F1,G1,G2,H1,I1 섹션 번호 미검증 | 높음 | verify_papers.py는 섹션 내용 검증 불가 — 수동 필요 |
-| O9 | E9 arXiv ID 유효하지 않음 | 중간 | 올바른 ID 찾기 |
-| O10 | verified/*.md 파일 미생성 (검증 6개 포함) | 낮음 | 구현 시 생성 |
-| O11 | Semantic Scholar rate limit (429) | 낮음 | API key 발급 또는 지연 증가 |
+| O7 | 36 papers unverified | high | Verify the relevant paper at implementation time |
+| O8 | E1, E3-E6, F1, G1, G2, H1, I1 section numbers unverified | high | verify_papers.py cannot verify section content — needs manual |
+| O9 | E9 arXiv ID invalid | medium | Find the correct ID |
+| O10 | verified/*.md files not created (including 6 verified) | low | Create at implementation time |
+| O11 | Semantic Scholar rate limit (429) | low | Get API key or increase delay |
 
 ---
 
-## 기록 규칙
+## Logging rules
 
-각 세션 시작 시:
-1. 이전 세션의 "다음 할 일"을 확인
-2. 이번 세션 로그 섹션 추가 (Session N — 날짜)
+At each session start:
+1. Check "next steps" from the previous session
+2. Add this session's log section (Session N — date)
 
-각 세션 종료 시:
-1. 변경 로그: 생성/수정/삭제한 파일
-2. 결정 로그: 내린 결정 + 이유 + 대안 + 근거 [src:]
-3. 오류 로그: 발생한 오류 + 원인 + 해결
-4. 미해결 사항: 아직 안 끝난 것
-5. 다음 할 일: 구체적 단계
+At each session end:
+1. Change log: files created/modified/deleted
+2. Decision log: decisions made + reasons + alternatives + evidence [src:]
+3. Error log: errors that occurred + cause + resolution
+4. Open items: things not yet done
+5. Next steps: concrete actions

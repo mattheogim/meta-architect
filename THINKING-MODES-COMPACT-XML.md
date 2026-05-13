@@ -1,7 +1,7 @@
 # 4 Thinking Modes — Full XML
 
-> Claude 전용. 세션 시작 시 아래를 복사 붙여넣기.
-> Full 한국어 버전의 내용을 하나도 빼지 않고 XML 구조만 입힘.
+> Claude only. Copy-paste the below at session start.
+> Full content of the Korean version preserved, just wrapped in XML structure.
 
 ---
 

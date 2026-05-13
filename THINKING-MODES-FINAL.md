@@ -1,39 +1,39 @@
 # 4 Thinking Modes — Final Package
 
-> 3가지 버전 + 하드코드. 상황에 맞는 걸 골라 쓴다.
+> 3 versions + hardcode. Pick the one that fits the situation.
 
 ---
 
-## Version A: Universal (Markdown) — 아무 AI
+## Version A: Universal (Markdown) — any AI
 
-아무 모델(ChatGPT, Gemini, Claude, 오픈소스)에서 복사 붙여넣기.
-
-```
-→ 파일: THINKING-MODES-PORTABLE.md
-→ 형식: Markdown + English
-→ 토큰: ~1000
-```
-
-## Version B: Claude Optimized (XML) — Claude 전용
-
-Claude에서 쓸 때 이 버전. Anthropic 공식 권장 형식.
-XML 태그로 구조(경계)를 감싸고, 내용은 자연어.
+Copy-paste into any model (ChatGPT, Gemini, Claude, open source).
 
 ```
-→ 아래 "Version B" 섹션
-→ 형식: XML tags + English natural language
-→ 토큰: ~1100
+→ file: THINKING-MODES-PORTABLE.md
+→ format: Markdown + English
+→ tokens: ~1000
 ```
 
-## Version C: Hardcode (Python) — 프로젝트에 코드로 강제
+## Version B: Claude Optimized (XML) — Claude only
 
-프롬프트로 "해줘"가 아니라, 코드가 안 하면 거부.
-아무 Python 프로젝트에 드롭인.
+This version when using with Claude. Anthropic-recommended format.
+Wrap structure (boundaries) with XML tags, write content in natural language.
 
 ```
-→ 아래 "Version C" 섹션
-→ 형식: Pydantic model
-→ 의존성: pydantic >= 2.0
+→ "Version B" section below
+→ format: XML tags + English natural language
+→ tokens: ~1100
+```
+
+## Version C: Hardcode (Python) — enforce decisions in project code
+
+Not "please do X" via prompt, but the code rejects you if you don't.
+Drop-in for any Python project.
+
+```
+→ "Version C" section below
+→ format: Pydantic model
+→ dependency: pydantic >= 2.0
 ```
 
 ---
@@ -41,7 +41,7 @@ XML 태그로 구조(경계)를 감싸고, 내용은 자연어.
 
 # Version B: Claude Optimized (XML)
 
-복사해서 Claude 세션 시작 시 붙여넣기:
+Copy and paste at the start of a Claude session:
 
 ---
 
@@ -157,7 +157,7 @@ Apply these 4 thinking modes in our work. Pick the right mode yourself based on 
 
 # Version C: Hardcode (Python)
 
-아무 Python 프로젝트에 이 파일을 복사. `pydantic >= 2.0` 필요.
+Copy this file into any Python project. Requires `pydantic >= 2.0`.
 
 ```python
 """
@@ -247,7 +247,7 @@ class Decision(BaseModel):
     @field_validator("pre_mortem")
     @classmethod
     def no_empty_premortem(cls, v: str) -> str:
-        if v.strip().lower() in ("none", "n/a", "없음", "nothing", "na"):
+        if v.strip().lower() in ("none", "n/a", "nothing", "na"):
             raise ValueError(
                 "pre_mortem cannot be 'none'. Every decision can fail."
             )
@@ -294,24 +294,24 @@ class DecisionGate:
 ---
 ---
 
-# 어떤 버전을 쓸까?
+# Which version to use?
 
-| 상황 | 버전 |
+| Situation | Version |
 |------|------|
-| **ChatGPT / Gemini / 아무 AI** | Version A (Markdown) |
-| **Claude 세션** | Version B (XML) |
-| **코드 프로젝트에서 결정 강제** | Version C (Python) — 프로젝트에 드롭인 |
-| **Claude + 코드 프로젝트** | Version B + C 둘 다 |
+| **ChatGPT / Gemini / any AI** | Version A (Markdown) |
+| **Claude session** | Version B (XML) |
+| **Enforce decisions in a code project** | Version C (Python) — drop-in to the project |
+| **Claude + code project** | Both Version B + C |
 
-## XML을 어디에 쓰는가 (Anthropic 공식 근거)
+## Where to use XML (Anthropic official rationale)
 
-| XML로 감싸는 것 (경계/구조) | 자연어로 쓰는 것 (내용) |
+| Wrap with XML (boundaries/structure) | Write in natural language (content) |
 |--------------------------|---------------------|
-| `<mode name="BUILD">` — 모드 경계 | 질문 내용 ("Generate 20 questions...") |
-| `<rules>` — 규칙 블록 경계 | 개별 규칙 텍스트 |
-| `<contentiousness_scale>` — 척도 구조 | 각 레벨 설명 |
-| `<never_do>` — 금지 목록 경계 | 금지 내용 |
-| `<depth_control>` — 판단 기준 구조 | 판단 설명 |
+| `<mode name="BUILD">` — mode boundary | question text ("Generate 20 questions...") |
+| `<rules>` — rule block boundary | individual rule text |
+| `<contentiousness_scale>` — scale structure | description of each level |
+| `<never_do>` — prohibition list boundary | content of prohibition |
+| `<depth_control>` — judgment criteria structure | judgment description |
 
-**원칙**: XML = 경계(어디서 끝나고 시작하는가), 자연어 = 내용(무슨 말인가)
-[src: Anthropic 공식 docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/use-xml-tags)
+**Principle**: XML = boundaries (where it starts and ends), natural language = content (what it says)
+[src: Anthropic official docs](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/use-xml-tags)

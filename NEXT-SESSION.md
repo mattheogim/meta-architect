@@ -1,26 +1,26 @@
-# 다음 세션 할 일
+# Next Session To-Do
 
-> 이 파일을 세션 시작 시 가장 먼저 읽는다.
-> 완료하면 체크 표시하고 SESSION-LOG.md에 기록.
-
----
-
-## 컨텍스트 로딩 순서 (새 세션 시작 시)
-
-```
-1. 이 파일 (NEXT-SESSION.md) 읽기
-2. CLAUDE.md 읽기 (행동 규칙 확인)
-3. SESSION-LOG.md 이전 세션 확인
-4. research/MASTER-PLAN.md §5 Phase 0 확인
-```
+> Read this file first at session start.
+> Check off when done and record in SESSION-LOG.md.
 
 ---
 
-## Phase 0: 프로젝트 셋업 + v2 보강 (예상 2~3시간)
+## Context loading order (at new session start)
 
-### Step 0-1: pyproject.toml + 프로젝트 구조
 ```
-[ ] pyproject.toml 생성
+1. Read this file (NEXT-SESSION.md)
+2. Read CLAUDE.md (check behavioral rules)
+3. Check previous session in SESSION-LOG.md
+4. Check research/MASTER-PLAN.md §5 Phase 0
+```
+
+---
+
+## Phase 0: Project setup + v2 reinforcement (est. 2-3 hours)
+
+### Step 0-1: pyproject.toml + project structure
+```
+[ ] Create pyproject.toml
     dependencies:
       - langgraph >= 0.2
       - pydantic >= 2.0
@@ -30,9 +30,9 @@
     optional:
       - e2b
       - scipy (logistic fitting)
-      - matplotlib (논문 그래프)
+      - matplotlib (paper figures)
 
-[ ] src/ 디렉토리 구조 생성 (빈 __init__.py)
+[ ] Create src/ directory structure (empty __init__.py)
     src/
     ├── __init__.py
     ├── blackboard/
@@ -49,55 +49,55 @@
     └── recorder/
         └── __init__.py
 
-[ ] tests/ 디렉토리 구조 생성 (빈 test 파일)
+[ ] Create tests/ directory structure (empty test files)
     tests/
     ├── __init__.py
     ├── test_state_transition.py
     ├── test_router.py
     └── test_gc.py
 
-[ ] .env.example 생성
+[ ] Create .env.example
     ANTHROPIC_API_KEY=sk-ant-...
     OPENAI_API_KEY=sk-...
 
-[ ] .gitignore 업데이트
+[ ] Update .gitignore
     .env
     __pycache__/
     eval/experiments/*/runs/
     *.pyc
 ```
 
-**검증**: `python -c "import pydantic; print('OK')"` + `pytest --collect-only`
+**Verify**: `python -c "import pydantic; print('OK')"` + `pytest --collect-only`
 
 ---
 
-### Step 0-2: v2 설계서 보강 (7+4+1개 항목)
+### Step 0-2: v2 design doc reinforcement (7+4+1 items)
 
-v2/meta-architect-v2.md에 직접 추가:
+Add directly to v2/meta-architect-v2.md:
 
 ```
-[ ] 1장: "Blackboard = 데이터 공유 계층, Phase = 제어 흐름 계층" 명시 추가
-[ ] 3.2.1: Review 루브릭 섹션 추가 (13슬롯 각각의 체크리스트)
-[ ] 3.3: Phase 0.5 MVP는 수동 승격 정책 명시
-[ ] 3.7: 수렴 규칙 섹션 추가 (Phase당 10, 동적 종료, 200 calls 안전망)
-[ ] 5장 Agent 3: Precedent Researcher를 web_search 기반으로 수정 (RAG defer)
-[ ] 8장: No Rubber-Stamping Rule 추가 (대안 1개 필수)
-[ ] 9장: success_criteria 검증 가능성 분류 (code/simulation/manual)
-[ ] 12장: Phase 전환 reasoning 요약 (200 토큰) 추가
-[ ] 13.6: Think in NL, Write in Schema 원칙 추가
-[ ] QOC 미해결 4개: "유지" 결정 기록 (Observability, Evaluation, Security, Evidence Source)
-[ ] 16장: 구현 로드맵을 Master Plan Phase 0→0.5→1→2→3→4로 업데이트
+[ ] Ch.1: Add explicit "Blackboard = data sharing layer, Phase = control flow layer"
+[ ] 3.2.1: Add Review rubric section (checklist for each of the 13 slots)
+[ ] 3.3: Specify Phase 0.5 MVP uses manual promotion policy
+[ ] 3.7: Add convergence rules section (10 per Phase, dynamic termination, 200-calls safety net)
+[ ] Ch.5 Agent 3: Revise Precedent Researcher to web_search-based (defer RAG)
+[ ] Ch.8: Add No Rubber-Stamping Rule (require min 1 alternative)
+[ ] Ch.9: Classify success_criteria verifiability (code/simulation/manual)
+[ ] Ch.12: Add Phase transition reasoning summary (200 tokens)
+[ ] 13.6: Add Think in NL, Write in Schema principle
+[ ] 4 unresolved QOC: record "keep" decisions (Observability, Evaluation, Security, Evidence Source)
+[ ] Ch.16: Update implementation roadmap to Master Plan Phase 0→0.5→1→2→3→4
 ```
 
-**검증**: `bash verification/verify.sh` (기존 45개 항목 통과 + 새 항목)
+**Verify**: `bash verification/verify.sh` (existing 45 items pass + new items)
 
 ---
 
-### Step 0-3: validate_claims.py INFO 9개 해결
+### Step 0-3: Resolve 9 INFO items from validate_claims.py
 
 ```
-[ ] MASTER-PLAN.md의 태그 없는 수치에 [src:] 태그 추가
-[ ] python research/validate_claims.py → INFO 0개 확인
+[ ] Add [src:] tags to untagged numbers in MASTER-PLAN.md
+[ ] python research/validate_claims.py → verify 0 INFO
 ```
 
 ---
@@ -111,56 +111,56 @@ v2/meta-architect-v2.md에 직접 추가:
 
 ---
 
-## Phase 0 완료 후 → Phase 0.5 시작 준비
+## After Phase 0 completion → preparing to start Phase 0.5
 
-### Step 0.5-prep: MUST-READ 논문 3편 읽기
+### Step 0.5-prep: Read 3 MUST-READ papers
 
 ```
 [ ] C1: Han & Zhang (arXiv:2507.01701)
-    - WebFetch로 arxiv HTML 접근
-    - §3 아키텍처, §4 에이전트 역할 핵심 추출
-    - research/verified/C1.md 작성
+    - Access arxiv HTML via WebFetch
+    - Extract key points from §3 architecture, §4 agent roles
+    - Write research/verified/C1.md
 
 [ ] E1: La Malfa (arXiv:2505.21298)
-    - §3 네 가지 비판 핵심 추출
-    - research/verified/E1.md 작성
+    - Extract key points from §3 four critiques
+    - Write research/verified/E1.md
 
 [ ] I1: Tam (arXiv:2408.02442)
-    - §3 실험, §4 완화 핵심 추출
-    - research/verified/I1.md 작성
+    - Extract key points from §3 experiments, §4 mitigation
+    - Write research/verified/I1.md
 ```
 
-**검증**: `python research/validate_claims.py` → WARN에서 C1, I1 사라짐
+**Verify**: `python research/validate_claims.py` → C1, I1 disappear from WARN
 
 ---
 
-## Phase 0.5 (다다음 세션): 3-Agent MVP
+## Phase 0.5 (session after next): 3-Agent MVP
 
 ```
-[ ] src/blackboard/schema.py — 13슬롯 Pydantic (핵심 4개 활성, 9개 예약)
-[ ] src/blackboard/entry.py — 19필드 메타데이터
-[ ] src/blackboard/state.py — 상태 전이 4원칙 validator
-[ ] src/blackboard/views.py — 3개 에이전트 읽기/쓰기 뷰
-[ ] src/agents/base_agent.py — Think NL, Write Schema 공통
-[ ] src/agents/architect_agent.py — Phase 1~3 통합
+[ ] src/blackboard/schema.py — 13-slot Pydantic (4 core active, 9 reserved)
+[ ] src/blackboard/entry.py — 19-field metadata
+[ ] src/blackboard/state.py — state transition 4-principle validator
+[ ] src/blackboard/views.py — read/write views for 3 agents
+[ ] src/agents/base_agent.py — Think NL, Write Schema common base
+[ ] src/agents/architect_agent.py — Phase 1-3 integrated
 [ ] src/agents/critic_agent.py — Phase 4 adversarial
-[ ] src/agents/synthesizer_agent.py — Phase 5 결정
-[ ] src/agents/prompts/{architect,critic,synthesizer}.md — 각 300~500줄
-[ ] src/llm/provider.py — LiteLLM 통합 (All-Sonnet)
-[ ] src/orchestrator/graph.py — LangGraph 조립 (선형 + 1 루프)
-[ ] src/recorder/logger.py — 기본 이벤트 로깅
-[ ] eval/experiment_runner.py _execute_system() 연결
-[ ] 시나리오 2 (채팅 앱)로 첫 end-to-end 실행
-[ ] EXP-SCALE "1-agent" + "3-agent" 각 15회 = 30회 데이터 수집
-[ ] 중간 검증: 3-agent > 1-agent? → 방향 결정
+[ ] src/agents/synthesizer_agent.py — Phase 5 decision
+[ ] src/agents/prompts/{architect,critic,synthesizer}.md — ~300-500 lines each
+[ ] src/llm/provider.py — LiteLLM integration (All-Sonnet)
+[ ] src/orchestrator/graph.py — LangGraph assembly (linear + 1 loop)
+[ ] src/recorder/logger.py — basic event logging
+[ ] Hook up eval/experiment_runner.py _execute_system()
+[ ] First end-to-end run with Scenario 2 (chat app)
+[ ] EXP-SCALE "1-agent" + "3-agent" × 15 runs each = 30 data points collected
+[ ] Interim check: 3-agent > 1-agent? → decide direction
 ```
 
 ---
 
-## 주의사항
+## Cautions
 
-1. **논문 안 읽고 구현 시작하지 말 것** — check_paper_deps.py hook이 경고함
-2. **실험은 반드시 ExperimentRunner를 통해** — 직접 호출 RuntimeError
-3. **수치를 쓸 때 [src:] 태그 필수** — validate_claims.py가 체크함
-4. **결정을 내릴 때 SESSION-LOG.md에 기록** — 결정 이유 + 대안 + 근거
-5. **PRE-REGISTRATION.md 수정 금지** — 가설 확정 후 변경 = HARKing
+1. **Do not start implementation without reading the paper** — check_paper_deps.py hook will warn
+2. **All experiments must go through ExperimentRunner** — direct calls raise RuntimeError
+3. **`[src:]` tag required when writing numbers** — validate_claims.py checks
+4. **When making a decision, record it in SESSION-LOG.md** — reason + alternatives + evidence
+5. **Do not modify PRE-REGISTRATION.md** — change after hypothesis lock = HARKing

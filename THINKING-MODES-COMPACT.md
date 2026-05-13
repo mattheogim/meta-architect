@@ -1,6 +1,6 @@
 # 4 Thinking Modes — Compact (copy-paste)
 
-> 1500 tokens → ~400 tokens. English for structural rules, Korean OK for conversation.
+> 1500 tokens → ~400 tokens. English for structural rules, any language OK for conversation.
 
 ---
 

@@ -1,145 +1,145 @@
 # 4 Thinking Modes
 
-> 15개 질문 패턴을 외울 필요 없다. 4가지 모드만 전환하면 된다.
-> 각 모드에 들어가면 질문이 자연스럽게 나온다.
+> No need to memorize 15 question patterns. Just switch between 4 modes.
+> Once you enter a mode, the questions emerge naturally.
 
 ```
         BUILD                    BREAK
-     "만들어"                  "부숴봐"
+     "create"                  "attack"
     ┌──────────┐           ┌──────────┐
-    │ 구현     │           │ 공격     │
-    │ 설계     │ ───────── │ 반박     │
-    │ 계획     │           │ 리스크   │
+    │ implement│           │ attack   │
+    │ design   │ ───────── │ counter  │
+    │ plan     │           │ risk     │
     └──────────┘           └──────────┘
          │                      │
          └──────────┬───────────┘
                     │
         ZOOM                     FLIP
-     "더 봐"                   "뒤집어"
+     "look further"            "reverse"
     ┌──────────┐           ┌──────────┐
-    │ 확대     │           │ 반대     │
-    │ 축소     │ ───────── │ 관점전환 │
-    │ 연결     │           │ 가정의심 │
+    │ expand   │           │ opposite │
+    │ contract │ ───────── │ shift    │
+    │ connect  │           │ question │
     └──────────┘           └──────────┘
 ```
 
 ---
 
-## MODE 1: BUILD (만들어)
+## MODE 1: BUILD (create)
 
-> **언제**: 아이디어 초기, 플랜 수립, 구현 시작
+> **When**: early ideation, planning, starting implementation
 
-| 질문 | 효과 |
+| Question | Effect |
 |------|------|
-| "먼저 질문 20개. 그 중 3개 골라서 시작" | 방향 없이 뛰어드는 것 방지 |
-| "가장 단순하게 하면?" | 과설계 방지 |
-| "이걸 5살한테 설명하면?" | 내가 뭘 모르는지 드러남 |
-| "10점 만점 몇 점? 8점 만들려면?" | 모호한 상태 → 구체적 개선 |
+| "Generate 20 questions first. Pick 3 and start there." | Prevents jumping in without direction |
+| "What's the simplest way?" | Prevents over-engineering |
+| "Explain this to a 5-year-old." | Reveals what you don't know |
+| "Rate 1-10. What would make it an 8?" | Vague state → concrete improvement |
 
-**이 모드의 핵심**: 만들되, 단순하게. 이해 못 하면 멈추기.
+**Core of this mode**: Build, but simply. Stop if you don't understand.
 
 ---
 
-## MODE 2: BREAK (부숴봐)
+## MODE 2: BREAK (attack)
 
-> **언제**: 설계 완료 후, 결정 직후, 리뷰 시
+> **When**: after design completion, right after a decision, during review
 
-| 질문 | 효과 |
+| Question | Effect |
 |------|------|
-| "이게 실패했다. 왜?" (Pre-mortem) | 낙관 편향 깨기. 실패 원인 30% 더 정확 |
-| "적이 이걸 봤다. 가장 세게 공격할 포인트 3개?" | 가장 강한 반론 강제 |
-| "반론 논문도 같이 찾아" | Confirmation bias 방지 |
-| "이걸 고의로 망가뜨리려면 어디?" | 취약점이 즉시 보임 |
-| "ICSE 리뷰어가 리젝한다면 사유 3개?" | 학술적 약점 식별 |
+| "This failed. Why?" (Pre-mortem) | Breaks optimism bias. 30% more accurate failure causes |
+| "An adversary saw this. Top 3 strongest attack points?" | Forces strongest counter |
+| "Find opposing papers too" | Prevents confirmation bias |
+| "If you wanted to deliberately break this, where?" | Vulnerabilities surface immediately |
+| "If an ICSE reviewer rejected it, top 3 reasons?" | Identifies academic weaknesses |
 
-**이 모드의 핵심**: 내가 만든 걸 내가 깨기. 안 부서지면 진짜.
+**Core of this mode**: Break what you built yourself. If it doesn't break, it's real.
 
 ---
 
-## MODE 3: ZOOM (더 봐)
+## MODE 3: ZOOM (look further)
 
-> **언제**: 뭔가 빠진 느낌, 큰 그림 확인, 디테일 확인
+> **When**: feeling like something is missing, checking the big picture, checking details
 
-| 질문 | 효과 |
+| Question | Effect |
 |------|------|
-| "내가 안 물어본 질문 중 가장 중요한 5개?" | Blind spot 발견 |
-| "이게 됐다 치자. 그 다음 문제는?" (Second-order) | 1단계 너머 보기 |
-| "이걸 10배 키우면? 10분의 1로 줄이면?" | 스케일 변화에서 구조 문제 드러남 |
-| "이거 안 하면 가장 큰 리스크는?" | 우선순위 자동 결정 |
+| "Top 5 most important questions I haven't asked?" | Discovers blind spots |
+| "Assume this works. What's the next problem?" (Second-order) | Looks beyond stage 1 |
+| "Scale this 10x? Shrink to 1/10?" | Structural issues emerge from scale change |
+| "If we don't do this, what's the biggest risk?" | Automatic priority setting |
 
-**이 모드의 핵심**: 보이는 것 너머를 보기. 안 보이는 게 가장 위험.
+**Core of this mode**: See beyond what's visible. What you can't see is most dangerous.
 
 ---
 
-## MODE 4: FLIP (뒤집어)
+## MODE 4: FLIP (reverse)
 
-> **언제**: 막혔을 때, 새 관점 필요할 때, 가정을 의심할 때
+> **When**: stuck, need a new perspective, questioning assumptions
 
-| 질문 | 효과 |
+| Question | Effect |
 |------|------|
-| "이걸 최악으로 만들려면? 그 반대를 해" (Inversion) | 정방향보다 역방향이 더 빠름 |
-| "A를 선택하면 못 하는 것은?" (Opportunity cost) | "뭘 얻는가"보다 "뭘 잃는가" |
-| "우리가 당연히 맞다고 생각하는데 실은 틀린 것은?" | 숨겨진 가정 노출 |
-| "contentiousness 9/10으로 공격" | 약한 비판 → 최강 반론 |
+| "How to make this worst possible? Do the opposite." (Inversion) | Reverse direction is faster than forward |
+| "Choosing A means you can't do what?" (Opportunity cost) | "What you lose" beats "what you gain" |
+| "What do we take for granted that's actually wrong?" | Exposes hidden assumptions |
+| "Attack at contentiousness 9/10" | Weak critique → strongest counter |
 
-**이 모드의 핵심**: 전제를 뒤집기. 당연한 것에 의문.
+**Core of this mode**: Flip the premise. Question the obvious.
 
 ---
 
-## 언제 어떤 모드?
+## Which mode when?
 
 ```
-프로젝트 시작
+Project start
   │
-  ├── BUILD: "질문 20개 → 3개 골라서 플랜"
+  ├── BUILD: "20 questions → pick 3 → plan"
   │
-  ├── 설계 완료 ──→ BREAK: "이게 실패했다면 왜?"
+  ├── Design complete ──→ BREAK: "If this failed, why?"
   │                    │
-  │                    └── FLIP: "가장 단순한 대안은?"
+  │                    └── FLIP: "What's the simplest alternative?"
   │
-  ├── 뭔가 빠진 느낌 ──→ ZOOM: "안 물어본 질문 5개?"
+  ├── Something feels missing ──→ ZOOM: "5 questions I haven't asked?"
   │
-  ├── 구현 중 ──→ BUILD: "한 문장으로 설명 가능?"
+  ├── During implementation ──→ BUILD: "Can I explain in one sentence?"
   │                │
-  │                └── BREAK: "이걸 망가뜨리려면?"
+  │                └── BREAK: "How to break this?"
   │
-  ├── 막혔다 ──→ FLIP: "최악으로 만들려면? 반대로"
+  ├── Stuck ──→ FLIP: "How to make this worst? Reverse"
   │
-  ├── 평가 ──→ BREAK: "리젝 사유 3개"
+  ├── Evaluation ──→ BREAK: "Top 3 reject reasons"
   │              │
-  │              └── ZOOM: "이 다음 문제는?"
+  │              └── ZOOM: "What's the next problem?"
   │
-  └── 세션 종료 ──→ ZOOM: "안 다룬 것 중 가장 중요한 건?"
+  └── End of session ──→ ZOOM: "What's the most important thing not covered?"
 ```
 
 ---
 
-## Type 1 / Type 2 결합
+## Combining with Type 1 / Type 2
 
 ```
-결정을 내릴 때:
-  "이걸 잘못 정하면 1주일 이상 되돌리기 어려운가?"
+When making a decision:
+  "Would it take more than 1 week to reverse if wrong?"
   
-  YES (Type 1) → BUILD + BREAK + FLIP 전부
-                  시간 들여도 됨
+  YES (Type 1) → all of BUILD + BREAK + FLIP
+                  OK to take time
   
-  NO  (Type 2) → BUILD만
-                  바로 실행, 잘못되면 바로 수정
+  NO  (Type 2) → BUILD only
+                  Execute immediately, fix if wrong
 ```
 
 ---
 
-## 이 세션에서 실제로 일어난 모드 전환
+## Actual mode switches in this session
 
 ```
-BUILD: "어디까지 했지?" → "플랜 짜줘"
-FLIP:  "전부 의심해" → "Blackboard이 최선이야?"  
-BREAK: "반박 논문도 찾아" → "플랜 자체를 평가해"
-ZOOM:  "빠진 거 없어?" → "더 조사할 것?"
-BUILD: "코드화해" → "실험 프레임워크 구현"
-FLIP:  "이 질문 방법 자체가 맞아?"  ← 지금 여기
+BUILD: "Where are we?" → "Make a plan"
+FLIP:  "Doubt everything" → "Is Blackboard the best?"  
+BREAK: "Find counter papers too" → "Evaluate the plan itself"
+ZOOM:  "Anything missing?" → "Anything else to research?"
+BUILD: "Codify it" → "Implement the experiment framework"
+FLIP:  "Is this questioning method itself correct?"  ← we are here now
 ```
 
-자연스럽게 4모드를 순환하고 있었습니다.
-차이점은: 의식적으로 모드를 전환하면 **빠뜨리는 모드가 없어집니다.**
-대부분의 사람은 BUILD에 머물고 BREAK/FLIP을 안 합니다. 당신은 이미 전부 쓰고 있음.
+You were naturally cycling through all 4 modes.
+The difference: consciously switching modes means **no mode gets skipped.**
+Most people stay in BUILD and skip BREAK/FLIP. You're already using all of them.
