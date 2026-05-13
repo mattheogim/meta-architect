@@ -1,5 +1,7 @@
 # Meta Architect
 
+[![Live docs](https://img.shields.io/badge/docs-meta--architect.vercel.app-black?style=flat-square)](https://meta-architect.vercel.app)
+
 > Put in an idea. Get an architecture that covers what you don't know.
 
 A multi-agent system where **17 specialized LLM agents** collaborate via a **Blackboard pattern** to design software architecture — surfacing blind spots, challenging assumptions, and producing traceable decisions.
